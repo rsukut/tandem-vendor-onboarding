@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <script>
+  (function() {
+    const correctPassword = "TandemOnboarding123!@#";
+    let attempts = 3;
+    while (attempts > 0) {
+      const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+      if (input === correctPassword) {
+        return; // Allow access
+      }
+      attempts--;
+      alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
+    }
+    alert("Access denied.");
+    window.location.href = "https://tandemdiabetes.com"; // Redirect away or close page
+  })();
+</script>
     <header>
         <h1>Vendor Onboarding Tool</h1>
     </header>
