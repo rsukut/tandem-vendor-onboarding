@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tandem Vendor Onboarding Tool</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <header>
         <h1>Vendor Onboarding Form</h1>
+        <p>Please complete the onboarding form for your selected Team, Role, and Status.</p>
     </header>
 
     <main>
@@ -18,15 +19,15 @@
     <script>
         // Grab parameters from URL
         const params = new URLSearchParams(window.location.search);
-        const org = params.get('org');
+        const team = params.get('org');    // 'org' parameter now represents Team
         const role = params.get('role');
-        const vendor = params.get('vendor');
+        const status = params.get('vendor');  // 'vendor' parameter now represents Status
 
         // Replace this with your Microsoft Form URL
         const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?yourVendorFormID";
 
         // Pre-fill if your form supports query parameters
-        document.getElementById("vendorForm").src = `${baseFormURL}&org=${encodeURIComponent(org)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(vendor)}`;
+        document.getElementById("vendorForm").src = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
     </script>
 </body>
 </html>
