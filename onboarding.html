@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tandem Vendor Onboarding Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Vendor Onboarding Form</h1>
+    </header>
 
+    <main>
+        <iframe id="vendorForm" src="" width="100%" height="800" frameborder="0"></iframe>
+    </main>
+
+    <script>
+        // Grab parameters from URL
+        const params = new URLSearchParams(window.location.search);
+        const org = params.get('org');
+        const role = params.get('role');
+        const vendor = params.get('vendor');
+
+        // Replace this with your Microsoft Form URL
+        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?yourVendorFormID";
+
+        // Pre-fill if your form supports query parameters
+        document.getElementById("vendorForm").src = `${baseFormURL}&org=${encodeURIComponent(org)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(vendor)}`;
+    </script>
+</body>
+</html>
