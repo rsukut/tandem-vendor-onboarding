@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tandem Vendor Onboarding Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Vendor Onboarding Tool</h1>
+    </header>
 
+    <main>
+        <section class="dropdowns">
+            <label for="orgSelect">Organization:</label>
+            <select id="orgSelect">
+                <option value="">-- Select Organization --</option>
+            </select>
+
+            <label for="roleSelect">Role:</label>
+            <select id="roleSelect" disabled>
+                <option value="">-- Select Role --</option>
+            </select>
+
+            <label for="vendorTypeSelect">Vendor Type:</label>
+            <select id="vendorTypeSelect">
+                <option value="">-- Select Vendor Type --</option>
+                <option value="FTE">FTE</option>
+                <option value="US Vendor">US Vendor</option>
+                <option value="OUS Vendor">OUS Vendor</option>
+            </select>
+        </section>
+
+        <section id="requirements" class="requirements-box">
+            <h2>Requirements</h2>
+            <div id="reqContent">
+                <p>Select an organization, role, and vendor type to view requirements.</p>
+            </div>
+        </section>
+
+        <button id="startBtn" disabled>Begin Onboarding</button>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
