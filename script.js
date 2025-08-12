@@ -4,79 +4,92 @@ fetch('roles.json')
     .then(response => response.json())
     .then(data => {
         rolesData = data;
-        populateOrgDropdown();
+        populateTeamDropdown();
+    })
+    .catch(err => {
+        console.error('Error loading roles.json:', err);
     });
 
-function populateOrgDropdown() {
-    const orgSelect = document.getElementById('orgSelect');
-    const orgs = [...new Set(rolesData.map(item => item.organization))];
-    orgs.forEach(org => {
+function populateTeamDropdown() {
+    const teamSelect = document.getElementById('orgSelect'); // orgSelect now holds Teams
+    const teams = [...new Set(rolesData.map(item => item.Team))];
+    teams.forEach(team => {
         const option = document.createElement('option');
-        option.value = org;
-        option.textContent = org;
-        orgSelect.appendChild(option);
+        option.value = team;
+        option.textContent = team;
+        teamSelect.appendChild(option);
     });
 }
 
 document.getElementById('orgSelect').addEventListener('change', function() {
-    const selectedOrg = this.value;
+    const selectedTeam = this.value;
     const roleSelect = document.getElementById('roleSelect');
     roleSelect.innerHTML = '<option value="">-- Select Role --</option>';
-    roleSelect.disabled = !selectedOrg;
+    roleSelect.disabled = !selectedTeam;
 
-    const filteredRoles = rolesData.filter(item => item.organization === selectedOrg);
-    const uniqueRoles = [...new Set(filteredRoles.map(item => item.role))];
+    const filteredRoles = rolesData.filter(item => item.Team === selectedTeam);
+    const uniqueRoles = [...new Set(filteredRoles.map(item => item.Role))];
     uniqueRoles.forEach(role => {
         const option = document.createElement('option');
         option.value = role;
         option.textContent = role;
         roleSelect.appendChild(option);
     });
+    // Clear requirements and disable start button on team change
+    clearRequirementsAndButton();
 });
 
 document.getElementById('roleSelect').addEventListener('change', updateRequirements);
 document.getElementById('vendorTypeSelect').addEventListener('change', updateRequirements);
 
 function updateRequirements() {
-    const org = document.getElementById('orgSelect').value;
+    const team = document.getElementById('orgSelect').value;
     const role = document.getElementById('roleSelect').value;
-    const vendor = document.getElementById('vendorTypeSelect').value;
+    const status = document.getElementById('vendorTypeSelect').value;
     const reqContent = document.getElementById('reqContent');
     const startBtn = document.getElementById('startBtn');
 
-    if (org && role && vendor) {
+    if (team && role && status) {
         const match = rolesData.find(item =>
-            item.organization === org &&
-            item.role === role &&
-            item.vendorType === vendor
+            item.Team === team &&
+            item.Role === role &&
+            item.Status === status
         );
 
         if (match) {
+            // Build requirements dynamically excluding keys: Team, Role, Status
             let reqHTML = '<ul>';
-            for (const [key, value] of Object.entries(match.requirements)) {
-                reqHTML += `<li><strong>${key}:</strong> ${value}</li>`;
-            }
+            Object.entries(match).forEach(([key, value]) => {
+                if (!['Team', 'Role', 'Status'].includes(key) && value.trim() !== "") {
+                    // Replace newlines with <br> for HTML formatting
+                    reqHTML += `<li><strong>${key}:</strong><br>${value.replace(/\n/g, "<br>")}</li>`;
+                }
+            });
             reqHTML += '</ul>';
             reqContent.innerHTML = reqHTML;
+            startBtn.disabled = false;
         } else {
             reqContent.innerHTML = '<p>No requirements found for this selection.</p>';
+            startBtn.disabled = true;
         }
-
-        startBtn.disabled = false;
     } else {
-        reqContent.innerHTML = '<p>Select an organization, role, and vendor type to view requirements.</p>';
-        startBtn.disabled = true;
+        clearRequirementsAndButton();
     }
 }
 
-document.getElementById('startBtn').addEventListener('click', function() {
-    const org = encodeURIComponent(document.getElementById('orgSelect').value);
-    const role = encodeURIComponent(document.getElementById('roleSelect').value);
-    const vendor = encodeURIComponent(document.getElementById('vendorTypeSelect').value);
+function clearRequirementsAndButton() {
+    document.getElementById('reqContent').innerHTML = '<p>Select a team, role, and status to view requirements.</p>';
+    document.getElementById('startBtn').disabled = true;
+}
 
-    if (vendor === "FTE") {
-        window.location.href = `fte.html?org=${org}&role=${role}&vendor=${vendor}`;
+document.getElementById('startBtn').addEventListener('click', function() {
+    const team = encodeURIComponent(document.getElementById('orgSelect').value);
+    const role = encodeURIComponent(document.getElementById('roleSelect').value);
+    const status = encodeURIComponent(document.getElementById('vendorTypeSelect').value);
+
+    if (status === "FTE") {
+        window.location.href = `fte.html?org=${team}&role=${role}&vendor=${status}`;
     } else {
-        window.location.href = `onboarding.html?org=${org}&role=${role}&vendor=${vendor}`;
+        window.location.href = `onboarding.html?org=${team}&role=${role}&vendor=${status}`;
     }
 });
