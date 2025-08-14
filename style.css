@@ -6,14 +6,21 @@ body {
 }
 
 header {
-    background-color: #003C5A;
-    color: white;
-    padding: 1rem;
-    text-align: center;
+    background-color: #003366; /* Dark blue */
+    display: flex;
+    justify-content: space-between; /* Title on left, logo on right */
+    align-items: center;
+    padding: 10px 20px;
 }
 
-h1 {
+header h1 {
+    color: white;
     margin: 0;
+    font-size: 1.8rem;
+}
+
+header .logo {
+    height: 50px; /* Adjust as needed */
 }
 
 main {
