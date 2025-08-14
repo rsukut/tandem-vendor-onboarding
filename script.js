@@ -58,18 +58,19 @@ function updateRequirements() {
 
         if (match) {
             let reqHTML = '';
-            Object.entries(match).forEach(([key, value], index, array) => {
-                if (!['Team', 'Role', 'Status'].includes(key) && value.trim() !== "") {
-                    // Inside each requirement, single break
-                    const formattedValue = value.replace(/\n/g, "<br>");
-                    reqHTML += `<strong>${key}:</strong><br>${formattedValue}`;
-                    
-                    // Between requirement categories, add a bigger gap
-                    if (index < array.length - 1) {
-                        reqHTML += "<br><br>";
-                    }
+            const keys = Object.keys(match).filter(k => !['Team', 'Role', 'Status'].includes(k) && match[k].trim() !== "");
+
+            keys.forEach((key, idx) => {
+                const value = match[key];
+                // Single <br> between items inside the category
+                const formattedValue = value.replace(/\n/g, "<br>");
+                reqHTML += `<strong>${key}:</strong><br>${formattedValue}`;
+                // Extra spacing only between categories
+                if (idx < keys.length - 1) {
+                    reqHTML += "<br><br>"; 
                 }
             });
+
             reqContent.innerHTML = reqHTML;
             startBtn.disabled = false;
         } else {
