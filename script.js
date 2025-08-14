@@ -57,15 +57,19 @@ function updateRequirements() {
         );
 
         if (match) {
-            // Build requirements dynamically excluding keys: Team, Role, Status
-            let reqHTML = '<ul>';
-            Object.entries(match).forEach(([key, value]) => {
+            let reqHTML = '';
+            Object.entries(match).forEach(([key, value], index, array) => {
                 if (!['Team', 'Role', 'Status'].includes(key) && value.trim() !== "") {
-                    // Replace newlines with <br><br> for extra spacing
-                    reqHTML += `<li><strong>${key}:</strong><br>${value.replace(/\n/g, "<br><br>")}</li>`;
+                    // Inside each requirement, single break
+                    const formattedValue = value.replace(/\n/g, "<br>");
+                    reqHTML += `<strong>${key}:</strong><br>${formattedValue}`;
+                    
+                    // Between requirement categories, add a bigger gap
+                    if (index < array.length - 1) {
+                        reqHTML += "<br><br>";
+                    }
                 }
             });
-            reqHTML += '</ul>';
             reqContent.innerHTML = reqHTML;
             startBtn.disabled = false;
         } else {
