@@ -61,8 +61,8 @@ function updateRequirements() {
             let reqHTML = '<ul>';
             Object.entries(match).forEach(([key, value]) => {
                 if (!['Team', 'Role', 'Status'].includes(key) && value.trim() !== "") {
-                    // Replace newlines with <br> for HTML formatting
-                    reqHTML += `<li><strong>${key}:</strong><br>${value.replace(/\n/g, "<br>")}</li>`;
+                    // Replace newlines with <br><br> for extra spacing
+                    reqHTML += `<li><strong>${key}:</strong><br>${value.replace(/\n/g, "<br><br>")}</li>`;
                 }
             });
             reqHTML += '</ul>';
