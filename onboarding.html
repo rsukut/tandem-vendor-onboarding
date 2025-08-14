@@ -6,6 +6,24 @@
     <title>Tandem Vendor Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
 </head>
+<script>
+  // Grab URL parameters
+  const params = new URLSearchParams(window.location.search);
+  const team = params.get('team');   // Team from index.html
+  const role = params.get('role');   // Role from index.html
+  const status = params.get('status'); // Status from index.html
+
+  // Base form URL from Microsoft Forms
+  const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
+
+  // Prefill text boxes (assuming your text boxes in MS Forms are question 6=Department, 7=Job Title, 11=Vendor Status)
+  // The format is: ?questionID=value
+  // Replace question IDs below with the actual field IDs from your form
+  const prefillURL = `${baseFormURL}&q6=${encodeURIComponent(team)}&q7=${encodeURIComponent(role)}&q11=${encodeURIComponent(status)}`;
+
+  // Set iframe src
+  document.getElementById("vendorForm").src = prefillURL;
+</script>
 <body>
     <header>
         <h1>Vendor Onboarding Form</h1>
