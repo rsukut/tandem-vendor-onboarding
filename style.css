@@ -13,6 +13,12 @@ header {
     padding: 10px 20px;
 }
 
+.header-middle {
+    flex: 1;                 /* Take up remaining space */
+    text-align: center;       /* Center the instructions */
+    margin: 0 20px;           /* Optional spacing from h1 and logo */
+}
+
 header h1 {
     color: white;
     margin: 0;
@@ -21,10 +27,9 @@ header h1 {
 
 /* Onboarding form instructions */
 .form-instructions {
-    color: white;          /* Make text white */
-    text-align: center;     /* Center text horizontally */
-    font-weight: 500;       /* Optional: slightly bolder for readability */
-    margin: 0.5em 0;        /* Optional: spacing above/below */
+    color: white;
+    font-weight: 500;
+    margin: 0;
 }
 
 header .logo {
