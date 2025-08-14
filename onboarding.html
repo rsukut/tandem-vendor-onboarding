@@ -5,25 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tandem Vendor Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Inline styles for header instructions */
+        .form-instructions {
+            text-align: center;
+            color: white;
+            font-size: 1.1rem;
+            margin: 0.5em 0;
+        }
+
+        header {
+            background-color: #001f4d; /* navy blue bar */
+            padding: 1em;
+        }
+
+        header h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 0.5em;
+        }
+
+        .logo {
+            display: block;
+            margin: 0.5em auto;
+            max-width: 200px;
+            height: auto;
+        }
+
+        main {
+            padding: 1em;
+        }
+    </style>
 </head>
-<script>
-  // Grab URL parameters
-  const params = new URLSearchParams(window.location.search);
-  const team = params.get('team');   // Team from index.html
-  const role = params.get('role');   // Role from index.html
-  const status = params.get('status'); // Status from index.html
-
-  // Base form URL from Microsoft Forms
-  const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen";
-
-  // Prefill text boxes (assuming your text boxes in MS Forms are question 6=Department, 7=Job Title, 11=Vendor Status)
-  // The format is: ?questionID=value
-  // Replace question IDs below with the actual field IDs from your form
-  const prefillURL = `${baseFormURL}&q6=${encodeURIComponent(team)}&q7=${encodeURIComponent(role)}&q11=${encodeURIComponent(status)}`;
-
-  // Set iframe src
-  document.getElementById("vendorForm").src = prefillURL;
-</script>
 <body>
     <header>
         <h1>Vendor Onboarding Form</h1>
@@ -33,29 +46,34 @@
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
     </header>
 
-<main>
-    <iframe id="vendorForm" src="" width="100%" frameborder="0" style="border:none; max-width:100%;" allowfullscreen></iframe>
-</main>
+    <main>
+        <iframe id="vendorForm" src="" width="100%" frameborder="0" style="border:none; max-width:100%;" allowfullscreen></iframe>
+    </main>
 
-<script>
-    // Grab parameters from URL for pre-fill
-    const params = new URLSearchParams(window.location.search);
-    const team = params.get('org');    
-    const role = params.get('role');
-    const status = params.get('vendor');
+    <script>
+        // Grab parameters from URL
+        const params = new URLSearchParams(window.location.search);
+        const team = params.get('org');    
+        const role = params.get('role');
+        const status = params.get('vendor');
 
-    const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?yourVendorFormID";
+        // Base form embed URL
+        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
 
-    const iframe = document.getElementById("vendorForm");
-    iframe.src = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+        // Build prefill URL if your text boxes support query parameters
+        const prefillURL = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
 
-    // Set a reasonable default height
-    iframe.style.height = "1200px";
+        // Set iframe src
+        const iframe = document.getElementById("vendorForm");
+        iframe.src = prefillURL;
 
-    // Optional: scroll to top of page when form loads
-    iframe.onload = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-</script>
+        // Optional: set a reasonable height
+        iframe.style.height = "1200px";
+
+        // Optional: scroll to top when form loads
+        iframe.onload = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
 </body>
 </html>
