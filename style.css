@@ -7,9 +7,9 @@ body {
 
 header {
     background-color: #003366; /* Dark blue */
-    display: flex;
-    justify-content: space-between; /* Title on left, logo on right */
-    align-items: center;
+    display: flex;              /* Arrange items side-by-side */
+    justify-content: space-between; /* Push title left, logo right */
+    align-items: center;        /* Vertically center both */
     padding: 10px 20px;
 }
 
@@ -20,7 +20,9 @@ header h1 {
 }
 
 header .logo {
-    height: 50px; /* Adjust as needed */
+    height: 40px;      /* Keep it smaller */
+    width: auto;       /* Maintain aspect ratio */
+    object-fit: contain;
 }
 
 main {
