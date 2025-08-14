@@ -17,18 +17,18 @@
         <iframe id="vendorForm" src="" width="100%" height="800" frameborder="0"></iframe>
     </main>
 
-    <script>
-        // Grab parameters from URL
-        const params = new URLSearchParams(window.location.search);
-        const team = params.get('org');    // 'org' parameter now represents Team
-        const role = params.get('role');
-        const status = params.get('vendor');  // 'vendor' parameter now represents Status
+<script>
+    // Grab parameters from URL
+    const params = new URLSearchParams(window.location.search);
+    const team = params.get('org');    // 'org' parameter now represents Team
+    const role = params.get('role');
+    const status = params.get('vendor');  // 'vendor' parameter now represents Status
 
-        // Replace this with your Microsoft Form URL
-        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?yourVendorFormID";
+    // Use your Microsoft Form embed link here
+    const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
 
-        // Pre-fill if your form supports query parameters
-        document.getElementById("vendorForm").src = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
-    </script>
+    // Pre-fill if your form supports query parameters
+    document.getElementById("vendorForm").src = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+</script>
 </body>
 </html>
