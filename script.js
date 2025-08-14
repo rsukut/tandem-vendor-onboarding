@@ -88,21 +88,22 @@ function clearRequirementsAndButton() {
 }
 
 document.getElementById('startBtn').addEventListener('click', function() {
-    const team = encodeURIComponent(document.getElementById('orgSelect').value);
-    const role = encodeURIComponent(document.getElementById('roleSelect').value);
-    const status = encodeURIComponent(document.getElementById('vendorTypeSelect').value);
+    const team = document.getElementById('orgSelect').value.trim();
+    const role = document.getElementById('roleSelect').value.trim();
+    const status = document.getElementById('vendorTypeSelect').value.trim();
 
-    let targetPage = '';
-
-    if (status === "FTE") {
-        targetPage = 'fte.html';
-    } else if (status === "US Vendor" || status === "OUS Vendor") {
-        targetPage = 'onboarding.html';
-    } else {
-        alert("Please select a valid Status.");
-        return; // stops execution if no valid status
+    if (!team || !role || !status) {
+        alert("Please select a valid Team, Role, and Status.");
+        return;
     }
 
-    // Redirect to the correct page with query parameters
-    window.location.href = `${targetPage}?team=${team}&role=${role}&status=${status}`;
+    const statusLower = status.toLowerCase();
+
+    if (statusLower === "fte") {
+        window.location.href = `fte.html?org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+    } else if (statusLower === "us vendor" || statusLower === "ous vendor") {
+        window.location.href = `onboarding.html?org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+    } else {
+        alert("Please select a valid status.");
+    }
 });
