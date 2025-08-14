@@ -92,9 +92,17 @@ document.getElementById('startBtn').addEventListener('click', function() {
     const role = encodeURIComponent(document.getElementById('roleSelect').value);
     const status = encodeURIComponent(document.getElementById('vendorTypeSelect').value);
 
+    let targetPage = '';
+
     if (status === "FTE") {
-        window.location.href = `fte.html?org=${team}&role=${role}&vendor=${status}`;
+        targetPage = 'fte.html';
+    } else if (status === "US Vendor" || status === "OUS Vendor") {
+        targetPage = 'onboarding.html';
     } else {
-        window.location.href = `onboarding.html?org=${team}&role=${role}&vendor=${status}`;
+        alert("Please select a valid Status.");
+        return; // stops execution if no valid status
     }
+
+    // Redirect to the correct page with query parameters
+    window.location.href = `${targetPage}?team=${team}&role=${role}&status=${status}`;
 });
