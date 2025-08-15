@@ -53,22 +53,21 @@
         const team = params.get('org');    
         const role = params.get('role');
         const status = params.get('vendor');
-
+        
         // Base form embed URL
         const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
-
-        // Build prefill URL if your text boxes support query parameters
-        const prefillURL = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
-
+        
+        // Construct pre-fill URL using the correct field IDs
+        const prefillURL = `${baseFormURL}&r1649743141ab40c1a8d0ad565f2ca489=${encodeURIComponent(team)}&r2ad9798441fe45d2b615a73e8fdb2ff8=${encodeURIComponent(role)}&r6dd353b4436543f296a7207a2a816d34=${encodeURIComponent(status)}`;
+        
         // Set iframe src
-        const iframe = document.getElementById("vendorForm");
-        iframe.src = prefillURL;
-
-        // Optional: set a reasonable height
-        iframe.style.height = "1200px";
-
+        document.getElementById("vendorForm").src = prefillURL;
+        
+        // Optional: set height
+        document.getElementById("vendorForm").style.height = "1200px";
+        
         // Optional: scroll to top when form loads
-        iframe.onload = function() {
+        document.getElementById("vendorForm").onload = function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
     </script>
