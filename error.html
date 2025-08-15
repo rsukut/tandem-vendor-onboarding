@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        main {
+            max-width: 800px;
+            margin: 120px auto 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .error-message {
+            background-color: #fdecea;
+            border: 1px solid #f5c2c7;
+            color: #842029;
+            padding: 20px;
+            border-radius: 6px;
+            font-size: 1.2rem;
+        }
+        .error-message strong {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        .home-link {
+            margin-top: 20px;
+            display: inline-block;
+            color: #0078d4;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vendor Onboarding Tool</h1>
+        <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
+    </header>
+
+    <main>
+        <div class="error-message">
+            <strong>Access Denied</strong>
+            You have entered the incorrect password three times.  
+            If you do not remember the password for this site, please 
+            <a href="mailto:youremail@tandemdiabetes.com">contact the site's administrator</a>.
+        </div>
+
+        <a href="index.html" class="home-link">Return to Home</a>
+    </main>
+</body>
+</html>
