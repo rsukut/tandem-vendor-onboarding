@@ -9,26 +9,34 @@
 <body>
     <header>
         <h1>FTE Onboarding Form</h1>
-        <p>Please complete the FTE onboarding form for your selected Team, Role, and Status.</p>
+        <p class="form-instructions">
+            Please complete the FTE onboarding form for your selected Team, Role, and Status.
+        </p>
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
     </header>
 
     <main>
-        <iframe id="fteForm" src="" width="100%" height="800" frameborder="0"></iframe>
+        <iframe id="fteForm" src="" width="100%" height="800" frameborder="0" style="border:none; max-width:100%;" allowfullscreen></iframe>
     </main>
 
     <script>
         // Grab parameters from URL
         const params = new URLSearchParams(window.location.search);
-        const team = params.get('org');    // 'org' now represents Team
-        const role = params.get('role');
-        const status = params.get('vendor');  // 'vendor' now represents Status
+        const team = params.get('org');    // Team from index.html
+        const role = params.get('role');   // Role
+        const status = params.get('vendor'); // Status
 
-        // Replace with your FTE Microsoft Form URL
-        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?yourFTEFormID";
+        // Use the actual embed link for your FTE form
+        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNEZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
 
-        // Pre-fill if your form supports query parameters
-        document.getElementById("fteForm").src = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+        // Prefill text boxes if your form supports query parameters
+        const prefillURL = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
+
+        // Set iframe src
+        document.getElementById("fteForm").src = prefillURL;
+
+        // Optional: set a reasonable height
+        document.getElementById("fteForm").style.height = "1200px";
     </script>
 </body>
 </html>
