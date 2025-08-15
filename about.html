@@ -1,10 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>About - Vendor Onboarding Tool</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the Vendor Onboarding Tool</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Position the Home link in the same spot as the About link on index.html */
+        .page-link {
+            position: absolute;
+            top: 100px; /* adjust to match index.html header spacing */
+            right: 20px;
+            font-size: 1rem;
+        }
+        .page-link a {
+            text-decoration: none;
+            color: #0078d4;
+        }
+        .page-link a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 800px;
+            margin: 120px auto 40px auto; /* push content down below header */
+            padding: 0 20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -12,19 +33,25 @@
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
     </header>
 
-    <main style="max-width:900px; margin:auto; padding:2rem;">
-        <p>This tool is designed exclusively for use by Tandem employees. It automates the onboarding process for new vendors and FTEs by sending the appropriate forms and notifications.</p>
+    <!-- Home link in same position as About link on index.html -->
+    <div class="page-link">
+        <a href="index.html">Home</a>
+    </div>
 
+    <main>
+        <p>This tool is designed for use exclusively by Tandem employees. It streamlines the vendor onboarding process and ensures that all relevant teams receive the necessary information.</p>
+
+        <p>The source of truth for onboarding data is an Excel spreadsheet that is backed up daily to ensure data integrity. If there is any missing or incorrect information, updates can be made by the administrator.</p>
+
+        <p>The website, Microsoft Form, and backend process will be updated weekly, or immediately if there is an issue preventing use.</p>
+
+        <p>When you select "Begin Onboarding" and complete the Microsoft Form, the tool will send forms to:</p>
         <ul>
-            <li>The source of truth is an Excel spreadsheet, backed up daily to ensure accurate and reliable data.</li>
-            <li>The tool, including the website and forms, is maintained and updated weekly, or immediately if there’s an issue preventing use.</li>
-            <li>Upon selecting "Begin Onboarding" and completing the Microsoft Form, the system automatically sends the necessary forms to:</li>
-            <ul>
-                <li>IT</li>
-                <li>DevEx</li>
-                <li>Rena for hardware orders</li>
-                <li>Quality and HR for notification</li>
-            </ul>
+            <li>IT</li>
+            <li>DevEx</li>
+            <li>Rena (for hardware orders)</li>
+            <li>Quality and HR (for notifications)</li>
+        </ul>
             <li>The tool can be updated as needed by the administrator to ensure all onboarding requirements are met.</li>
         </ul>
 
