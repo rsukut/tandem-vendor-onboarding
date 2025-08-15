@@ -19,19 +19,19 @@
 <script>
     // Grab parameters from URL
     const params = new URLSearchParams(window.location.search);
-    const team = params.get('org');    // Team from index.html
-    const role = params.get('role');   // Role
-    const status = params.get('vendor'); // Status
-
-    // Use the correct embed link for your FTE form
+    const team = params.get('org');    
+    const role = params.get('role');
+    const status = params.get('vendor');
+    
+    // Base form embed URL
     const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUMENQT1Q5UTZZUDdSQVUzUThNUzE1OTJOOS4u&embed=true";
-
-    // Prefill text boxes if your form supports query parameters
-    const prefillURL = `${baseFormURL}&org=${encodeURIComponent(team)}&role=${encodeURIComponent(role)}&vendor=${encodeURIComponent(status)}`;
-
+    
+    // Construct prefill URL using the correct field IDs
+    const prefillURL = `${baseFormURL}&rb94116139fe64e03be7e11f1b3160be6=${encodeURIComponent(team)}&ra9c7e3c1abc446ae8358ccda0a09c6ee=${encodeURIComponent(role)}&rf19644d6b14b495093c0c403b65d9fc8=${encodeURIComponent(status)}`;
+    
     // Set iframe src
     document.getElementById("fteForm").src = prefillURL;
-
+    
     // Optional: set a reasonable height
     document.getElementById("fteForm").style.height = "1200px";
 </script>
