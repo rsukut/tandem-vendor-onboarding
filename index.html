@@ -43,22 +43,6 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <script>
-  (function() {
-    const correctPassword = "Onboarding!";
-    let attempts = 3;
-    while (attempts > 0) {
-      const input = prompt("Please enter the password to access the Tandem Onboarding Tool:");
-      if (input === correctPassword) {
-        return; // Allow access
-      }
-      attempts--;
-      alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
-    }
-    alert("Access denied.");
-    window.location.href = "error.html"; // Redirect away
-  })();
-</script>
     <header>
         <h1>Onboarding Tool</h1>
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
