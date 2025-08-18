@@ -134,3 +134,7 @@ button:disabled {
     text-align: center;       /* center the text for consistency */
     border-radius: 6px;       /* slightly rounded corners */
 }
+
+.content-wrapper {
+    margin-top: 20px;
+}
