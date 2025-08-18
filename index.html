@@ -23,7 +23,7 @@
     // Prompt user for password
     let attempts = 3;
     while (attempts > 0) {
-        const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+        const input = prompt("Please enter the password to access the Tandem Onboarding Tool:");
         if (input === PASSWORD) {
             setSessionCookie("isLoggedIn", "true");
             return;
@@ -38,7 +38,7 @@
 </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tandem Vendor Onboarding Tool</title>
+    <title>Tandem Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -47,7 +47,7 @@
     const correctPassword = "Onboarding!";
     let attempts = 3;
     while (attempts > 0) {
-      const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+      const input = prompt("Please enter the password to access the Tandem Onboarding Tool:");
       if (input === correctPassword) {
         return; // Allow access
       }
@@ -59,7 +59,7 @@
   })();
 </script>
     <header>
-        <h1>Vendor Onboarding Tool</h1>
+        <h1>Onboarding Tool</h1>
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
     </header>
 <div class="home-link-wrapper">
