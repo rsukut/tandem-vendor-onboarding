@@ -10,23 +10,23 @@
             padding: 20px;
             max-width: 1000px;
             margin: 0 auto;
+            text-align: center;
         }
 
-        /* Responsive iframe container */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 75%; /* 4:3 aspect ratio, adjust if needed */
-            height: 0;
-        }
-
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .start-button {
+            background-color: #FF6B00;
+            color: white;
+            padding: 0.75rem 1.5rem;
             border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .start-button:hover {
+            background-color: #e55b00;
         }
     </style>
 </head>
@@ -37,36 +37,33 @@
     </header>
 
     <main>
-        <div class="iframe-container">
-            <iframe id="fteForm" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen>
-            </iframe>
-        </div>
+        <p>Click the button below to open the pre-filled FTE Onboarding Form in a new tab.</p>
+        <a id="startForm" href="#" class="start-button" target="_blank">Begin FTE Onboarding</a>
     </main>
 
     <script>
         // Grab parameters from URL
         const params = new URLSearchParams(window.location.search);
-        const team = params.get('org');    
-        const role = params.get('role');
-        const status = params.get('vendor');
+        const team = params.get('org') || '';
+        const role = params.get('role') || '';
+        const status = params.get('vendor') || '';
 
-        // Base form embed URL (just the URL, NOT the iframe)
-        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUMENQT1Q5UTZZUDdSQVUzUThNUzE1OTJOOS4u&embed=true";
+        // Base form URL (just the URL, not iframe)
+        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUMENQT1Q5UTZZUDdSQVUzUThNUzE1OTJOOS4u";
 
-        // Construct prefill URL using the correct field IDs
-        const prefillURL = `${baseFormURL}&rb94116139fe64e03be7e11f1b3160be6=${encodeURIComponent(team)}&ra9c7e3c1abc446ae8358ccda0a09c6ee=${encodeURIComponent(role)}&rf19644d6b14b495093c0c403b65d9fc8=${encodeURIComponent(status)}`;
+        // Construct prefill URL using correct field IDs
+        const prefillURL = `${baseFormURL}&rb94116139fe64e03be7e11f1b3160be6=${encodeURIComponent(team)}&ra9c7e3c1abc446ae8358ccda0a09c6ee=${encodeURIComponent(role)}&rf19644d6b14b495093c0c403b65d9fc8=${encodeURIComponent(status)}&embed=true`;
 
-        // Set iframe src
-        document.getElementById("fteForm").src = prefillURL;
-    </script>
+        // Set button href to the pre-filled form
+        document.getElementById("startForm").href = prefillURL;
 
-    <script>
+        // Optional: alert instructions
         window.onload = function() {
             alert(
-                "To begin onboarding, please ensure all blanks in the form are filled out completely.\n\n" +
+                "To begin FTE onboarding, please ensure all blanks in the form are filled out completely.\n\n" +
                 "Several blanks have already been pre-filled with information from the previous page. " +
                 "Please do not update these items—if a different team, role, or status is needed, use your browser's back button " +
-                "and make a new selection before clicking 'Begin onboarding'.\n\n" +
+                "and make a new selection before clicking 'Begin FTE Onboarding'.\n\n" +
                 "Once the form is filled out, you must click 'Submit' for the automated process to begin."
             );
         };
