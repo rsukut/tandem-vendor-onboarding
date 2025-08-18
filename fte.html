@@ -6,11 +6,19 @@
     <title>Tandem FTE Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
         main {
             padding: 20px;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
+            flex: 1; /* allows main to grow and push footer down */
         }
 
         .start-button {
@@ -39,26 +47,21 @@
     <main>
         <p>Click the button below to open the pre-filled FTE Onboarding Form in a new tab.</p>
         <a id="startForm" href="#" class="start-button" target="_blank">Begin FTE Onboarding</a>
-    <a href="index.html" class="home-link">Home</a>
+        <br><br>
+        <a href="index.html" class="home-link">Home</a>
     </main>
 
     <script>
-        // Grab parameters from URL
         const params = new URLSearchParams(window.location.search);
         const team = params.get('org') || '';
         const role = params.get('role') || '';
         const status = params.get('vendor') || '';
 
-        // Base form URL (just the URL, not iframe)
         const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUMENQT1Q5UTZZUDdSQVUzUThNUzE1OTJOOS4u";
-
-        // Construct prefill URL using correct field IDs
         const prefillURL = `${baseFormURL}&rb94116139fe64e03be7e11f1b3160be6=${encodeURIComponent(team)}&ra9c7e3c1abc446ae8358ccda0a09c6ee=${encodeURIComponent(role)}&rf19644d6b14b495093c0c403b65d9fc8=${encodeURIComponent(status)}&embed=true`;
 
-        // Set button href to the pre-filled form
         document.getElementById("startForm").href = prefillURL;
 
-        // Optional: alert instructions
         window.onload = function() {
             alert(
                 "To begin FTE onboarding, once redirected please ensure all blanks in the form are filled out completely.\n\n" +
