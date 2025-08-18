@@ -110,13 +110,10 @@ button:disabled {
 }
 
 .home-link {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    display: inline-block;
     color: #0078d4;
     text-decoration: none;
     font-weight: bold;
-    z-index: 10; /* Make sure it’s above other content */
 }
 
 .home-link:hover {
@@ -124,6 +121,6 @@ button:disabled {
 }
 
 .home-link-wrapper {
-    text-align: center;
-    margin-top: 20px;
+    text-align: right;   /* aligns Home link to the right */
+    margin: 10px 20px;   /* space from edges */
 }
