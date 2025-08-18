@@ -1,6 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+(function() {
+    const PASSWORD = "Onboarding!"; // temporary password
+
+    // Set a session cookie
+    function setSessionCookie(name, value) {
+        document.cookie = name + "=" + value + ";path=/;SameSite=Strict"; 
+    }
+
+    // Read a session cookie
+    function getSessionCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // Skip prompt if already logged in
+    if (getSessionCookie("isLoggedIn") === "true") return;
+
+    // Prompt user for password
+    let attempts = 3;
+    while (attempts > 0) {
+        const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+        if (input === PASSWORD) {
+            setSessionCookie("isLoggedIn", "true"); // remember login for this session
+            return; // allow access
+        }
+        attempts--;
+        alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
+    }
+
+    alert("Access denied.");
+    window.location.href = "error.html"; // redirect if failed
+})();
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>About the Vendor Onboarding Tool</title>
