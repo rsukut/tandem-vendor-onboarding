@@ -68,7 +68,7 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 320px;
+    width: 320px; /* constant width */
     max-width: 90%;
     background-color: #f0f4f8;
     border: 1px solid #ccc;
@@ -86,7 +86,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        cursor: default;
+        cursor: pointer;
     ">
         <span>Chat</span>
         <span id="chatMinimize" style="cursor:pointer;">_</span>
@@ -100,22 +100,18 @@
 </div>
 
 <script>
-    const chatBubble = document.getElementById('chatBubble');
+    const chatContent = document.getElementById('chatContent');
     const chatMinimize = document.getElementById('chatMinimize');
 
-    let minimized = false;
+    let minimized = false; // start maximized
 
     chatMinimize.addEventListener('click', () => {
         minimized = !minimized;
         if(minimized){
             chatContent.style.display = 'none';
-            chatBubble.style.width = '50px';
-            chatBubble.style.height = '50px';
             chatMinimize.textContent = '+';
         } else {
             chatContent.style.display = 'block';
-            chatBubble.style.width = '320px';
-            chatBubble.style.height = 'auto';
             chatMinimize.textContent = '_';
         }
     });
