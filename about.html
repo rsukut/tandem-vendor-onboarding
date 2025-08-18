@@ -68,47 +68,55 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 300px;
+    width: 320px;
     max-width: 90%;
-    background-color: #0078d4;
-    color: white;
+    background-color: #f0f4f8;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    font-family: sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 9999;
-    overflow: hidden;
-    transition: height 0.3s ease;
+    font-family: sans-serif;
 ">
-    <div id="chatHeader" style="
-        padding: 10px 15px;
-        cursor: pointer;
-        font-weight: bold;
-        background-color: #005a9e;
-        text-align: center;
-    ">Chat with Admin</div>
-    <div id="chatContent" style="
-        display: none;
-        padding: 10px 15px;
-        font-size: 14px;
-        line-height: 1.4;
-        color: #fff;
+    <!-- Header with minimize button -->
+    <div style="
         background-color: #0078d4;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: default;
     ">
-        If you have any questions or need updates made, please 
-        <a href="https://teams.microsoft.com/l/chat/0/0?users=you@company.com" target="_blank" 
-           style="color: #ffeb3b; text-decoration: underline;">send us a Teams message</a>!
+        <span>Chat</span>
+        <span id="chatMinimize" style="cursor:pointer;">_</span>
+    </div>
+    <!-- Body -->
+    <div id="chatContent" style="padding: 15px; font-size: 14px; color: #000;">
+        <p>
+            For questions or updates, please <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" style="color:#0078d4; text-decoration:underline;">send us a Teams message</a>.
+        </p>
     </div>
 </div>
 
 <script>
-    const chatHeader = document.getElementById('chatHeader');
-    const chatContent = document.getElementById('chatContent');
+    const chatBubble = document.getElementById('chatBubble');
+    const chatMinimize = document.getElementById('chatMinimize');
 
-    chatHeader.addEventListener('click', () => {
-        if (chatContent.style.display === 'none' || chatContent.style.display === '') {
-            chatContent.style.display = 'block';
-        } else {
+    let minimized = false;
+
+    chatMinimize.addEventListener('click', () => {
+        minimized = !minimized;
+        if(minimized){
             chatContent.style.display = 'none';
+            chatBubble.style.width = '50px';
+            chatBubble.style.height = '50px';
+            chatMinimize.textContent = '+';
+        } else {
+            chatContent.style.display = 'block';
+            chatBubble.style.width = '320px';
+            chatBubble.style.height = 'auto';
+            chatMinimize.textContent = '_';
         }
     });
 </script>
