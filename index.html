@@ -42,12 +42,12 @@
     <title>Tandem Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
 </head>
-<!-- Single Chat Bubble -->
+<!-- Chat Bubble -->
 <div id="chatBubble" style="
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 320px;
+    width: 320px; /* constant width */
     max-width: 90%;
     background-color: #f0f4f8;
     border: 1px solid #ccc;
@@ -82,14 +82,13 @@
 </div>
 
 <script>
-    const chatBubble = document.getElementById('chatBubble');
     const chatContent = document.getElementById('chatContent');
     const chatMinimize = document.getElementById('chatMinimize');
 
     let minimized = false;
 
     chatMinimize.addEventListener('click', (e) => {
-        e.stopPropagation(); // prevent header click from doing anything else
+        e.stopPropagation();
         minimized = !minimized;
 
         if(minimized){
