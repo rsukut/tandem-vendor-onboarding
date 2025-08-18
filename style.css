@@ -51,10 +51,12 @@ header .logo {
 }
 
 main {
-    max-width: 900px;
-    margin: auto;
-    padding: 2rem;
-    clear: both;
+    position: relative;  /* makes absolute children relative to main */
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    flex: 1;
 }
 
 .dropdowns {
