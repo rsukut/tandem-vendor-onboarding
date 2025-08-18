@@ -1,106 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vendor Onboarding Tool</title>
-  <script>
-    (function() {
-      const correctPassword = "Onboarding!"; // your temporary password
+    <script>
+  const PASSWORD = "Onboarding!"; // set your password
 
-      function setSessionCookie(name, value) {
-        document.cookie = name + "=" + value + ";path=/;SameSite=Strict"; // session cookie
-      }
+  function setCookie(name, value) {
+    document.cookie = name + "=" + value + ";path=/"; // session cookie
+  }
 
-      function getSessionCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-      }
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
 
-      // If the user is already logged in, skip prompt
-      if (getSessionCookie("isLoggedIn") === "true") return;
-
-      let attempts = 3;
-      while (attempts > 0) {
-        const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
-        if (input === correctPassword) {
-          setSessionCookie("isLoggedIn", "true"); // remember login for this session
-          return; // allow access
-        }
+  // check if user is already logged in
+  if (getCookie("isLoggedIn") !== "true") {
+    let attempts = 3;
+    while (attempts > 0) {
+      const userInput = prompt("Enter the site password:");
+      if (userInput === PASSWORD) {
+        setCookie("isLoggedIn", "true");
+        break;
+      } else {
         attempts--;
-        alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
+        alert(`Incorrect password. ${attempts} attempt(s) remaining.`);
       }
-
-      alert("Access denied.");
-      window.location.href = "error.html"; // redirect away
-    })();
-  </script>
+      if (attempts === 0) {
+        alert("No attempts left. Reload the page to try again.");
+        document.body.innerHTML = ""; // hide page content
+      }
+    }
+  }
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tandem Vendor Onboarding Tool</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-  <h1>Vendor Onboarding Tool</h1>
-  <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
-</header>
+    <script>
+  (function() {
+    const correctPassword = "Onboarding!";
+    let attempts = 3;
+    while (attempts > 0) {
+      const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+      if (input === correctPassword) {
+        return; // Allow access
+      }
+      attempts--;
+      alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
+    }
+    alert("Access denied.");
+    window.location.href = "error.html"; // Redirect away
+  })();
+</script>
+    <header>
+        <h1>Vendor Onboarding Tool</h1>
+        <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
+    </header>
 
-  <main>
-    <nav style="text-align:right; margin-bottom:1em;">
-      <a href="about.html" style="color:#FF6B00; font-weight:bold; text-decoration:none;">About</a>
-    </nav>
+    <main>
+        <nav style="text-align:right; margin-bottom:1em;">
+            <a href="about.html" style="color:#FF6B00; font-weight:bold; text-decoration:none;">About</a>
+        </nav>
+        <section class="dropdowns">
+            <label for="orgSelect">Team:</label>
+            <select id="orgSelect">
+                <option value="">-- Select Team --</option>
+            </select>
 
-    <section class="dropdowns">
-      <label for="orgSelect">Team:</label>
-      <select id="orgSelect">
-        <option value="">-- Select Team --</option>
-      </select>
+            <label for="roleSelect">Role:</label>
+            <select id="roleSelect" disabled>
+                <option value="">-- Select Role --</option>
+            </select>
 
-      <label for="roleSelect">Role:</label>
-      <select id="roleSelect" disabled>
-        <option value="">-- Select Role --</option>
-      </select>
+            <label for="vendorTypeSelect">Status:</label>
+            <select id="vendorTypeSelect">
+                <option value="">-- Select Status --</option>
+                <option value="FTE">FTE</option>
+                <option value="US Vendor">US Vendor</option>
+                <option value="OUS Vendor">OUS Vendor</option>
+            </select>
+        </section>
 
-      <label for="vendorTypeSelect">Status:</label>
-      <select id="vendorTypeSelect">
-        <option value="">-- Select Status --</option>
-        <option value="FTE">FTE</option>
-        <option value="US Vendor">US Vendor</option>
-        <option value="OUS Vendor">OUS Vendor</option>
-      </select>
-    </section>
+        <section id="requirements" class="requirements-box">
+            <h2>Requirements</h2>
+            <div id="reqContent">
+                <p>Select a team, role, and status to view requirements.</p>
+            </div>
+        </section>
 
-    <section id="requirements" class="requirements-box">
-      <h2>Requirements</h2>
-      <div id="reqContent">
-        <p>Select a team, role, and status to view requirements.</p>
-      </div>
-    </section>
+        <button id="startBtn" disabled>Begin Onboarding</button>
+    </main>
 
-    <button id="startBtn" disabled>Begin Onboarding</button>
-  </main>
-
-  <footer style="
-    background-color: #e5f2fa;
-    color: #000000;
-    text-align: center;
-    padding: 50px 20px;
-    font-family: sans-serif;
-    font-size: 13px;
-    line-height: 1.5;
-  ">
-    <div style="margin-bottom: 15px;">
-      <img src="/tandem-vendor-onboarding/images/tndmfooter.JPG" alt="Tandem Diabetes Care Logo" style="max-width:160px; height:auto;">
-    </div>
-    <div style="margin-bottom: 12px;">
-      <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank"
-         style="color: #000000; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
-      <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank"
-         style="color: #000000; text-decoration: none; margin: 0 10px;">Terms of Use</a>
-    </div>
-    <div style="font-size: 11px; margin-top: 5px;">
-      © 2025 Tandem Diabetes Care, Inc. All rights reserved.
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+<footer style="
+  background-color: #e5f2fa; /* light slate-blue tone */
+  color: #000000;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+">
+  <div style="margin-bottom: 15px;">
+    <img src="/tandem-vendor-onboarding/images/tndmfooter.JPG" alt="Tandem Diabetes Care Logo" style="max-width:160px; height:auto;">
+  </div>
+  <div style="margin-bottom: 12px;">
+    <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank"
+       style="color: #000000; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+    <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank"
+       style="color: #000000; text-decoration: none; margin: 0 10px;">Terms of Use</a>
+  </div>
+  <div style="font-size: 11px; margin-top: 5px;">
+    © 2025 Tandem Diabetes Care, Inc. All rights reserved.
+  </div>
+</footer>
 </html>
