@@ -3,6 +3,9 @@ body {
     background-color: #F5F5F5;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack header/main/footer vertically */
+    min-height: 100vh;
 }
 
 header {
@@ -30,12 +33,6 @@ html, body {
     margin: 0;              /* Remove default browser margins */
     padding: 0;
 }
-
-body {
-    display: flex;
-    flex-direction: column; /* Stack header/main/footer vertically */
-}
-
 
 /* Onboarding form instructions */
 .form-instructions {
