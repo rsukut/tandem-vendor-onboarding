@@ -36,7 +36,7 @@ body {
     flex-direction: column; /* Stack header/main/footer vertically */
 }
 
-main {
+.centered-page {
     flex: 1;                /* Main content grows to fill space */
     display: flex;          /* Optional: center content vertically */
     align-items: center;    /* vertical centering */
