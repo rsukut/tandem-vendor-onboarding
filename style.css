@@ -44,7 +44,6 @@ html, body {
 
 header .logo {
     height: 40px;      /* Keep it smaller */
-    max-height: 40px;
     width: auto;       /* Maintain aspect ratio */
     object-fit: contain;
 }
