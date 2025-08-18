@@ -36,13 +36,6 @@ body {
     flex-direction: column; /* Stack header/main/footer vertically */
 }
 
-.centered-page {
-    flex: 1;                /* Main content grows to fill space */
-    display: flex;          /* Optional: center content vertically */
-    align-items: center;    /* vertical centering */
-    justify-content: center; /* horizontal centering */
-    text-align: center; /* Keep error message centered */
-}
 
 /* Onboarding form instructions */
 .form-instructions {
@@ -103,8 +96,20 @@ button:disabled {
     cursor: not-allowed;
 }
 
+.centered-page {
+    position: relative;  /* reference for absolute child */
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-container {
+    text-align: center; /* keep message centered */
+}
+
 .home-link {
-    position: absolute;      /* Move it out of normal flow */
+    position: absolute;  /* absolute positioning relative to main */
     top: 20px;
     right: 20px;
     color: #0078d4;
