@@ -41,6 +41,7 @@ body {
     display: flex;          /* Optional: center content vertically */
     align-items: center;    /* vertical centering */
     justify-content: center; /* horizontal centering */
+    text-align: center; /* Keep error message centered */
 }
 
 /* Onboarding form instructions */
@@ -100,4 +101,17 @@ button {
 button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+}
+
+.home-link {
+    position: absolute;      /* Move it out of normal flow */
+    top: 20px;
+    right: 20px;
+    color: #0078d4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.home-link:hover {
+    text-decoration: underline;
 }
