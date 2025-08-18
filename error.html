@@ -37,14 +37,15 @@
         }
     </style>
 </head>
-    <!-- Chat Bubble for Error Page -->
-    <div id="chatBubble" style="
+<!-- Chat Bubble for Error Page -->
+<div id="chatBubble" style="
     position: fixed;
     bottom: 20px;
     right: 20px;
     width: 250px;
     font-family: sans-serif;
     z-index: 1000;
+    overflow: hidden; /* needed for sliding */
 ">
     <!-- Header / Minimize bar -->
     <div id="chatHeader" style="
@@ -58,18 +59,20 @@
         align-items: center;
     ">
         <span>Need Help?</span>
-        <span id="chatToggle" style="font-weight: bold;">&#9650;</span> <!-- up arrow for expand/minimize -->
+        <span id="chatToggle" style="font-weight: bold;">&#9650;</span> <!-- up arrow initially -->
     </div>
 
     <!-- Content -->
     <div id="chatContent" style="
-        display: none;
+        height: 0; /* start minimized */
         background-color: #f1f1f1;
         color: #000;
         padding: 12px;
         border-radius: 0 0 8px 8px;
         font-size: 13px;
         line-height: 1.4;
+        overflow: hidden; 
+        transition: height 0.3s ease;
     ">
         <p>
             If you forgot the password or need information updated, please
@@ -86,13 +89,16 @@
 
     let minimized = true; // start minimized
 
+    // store full natural height of content for animation
+    const fullHeight = chatContent.scrollHeight + "px";
+
     chatHeader.addEventListener('click', () => {
         minimized = !minimized;
         if(minimized){
-            chatContent.style.display = 'none';
+            chatContent.style.height = '0';
             chatToggle.innerHTML = '&#9650;'; // up arrow
         } else {
-            chatContent.style.display = 'block';
+            chatContent.style.height = fullHeight;
             chatToggle.innerHTML = '&#9660;'; // down arrow
         }
     });
