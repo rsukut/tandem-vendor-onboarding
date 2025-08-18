@@ -33,28 +33,6 @@
   window.location.href = "error.html"; // redirect away
 })();
 </script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tandem Vendor Onboarding Tool</title>
-    <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-    <script>
-  (function() {
-    const correctPassword = "Onboarding!";
-    let attempts = 3;
-    while (attempts > 0) {
-      const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
-      if (input === correctPassword) {
-        return; // Allow access
-      }
-      attempts--;
-      alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
-    }
-    alert("Access denied.");
-    window.location.href = "error.html"; // Redirect away
-  })();
-</script>
     <header>
         <h1>Vendor Onboarding Tool</h1>
         <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo" class="logo">
