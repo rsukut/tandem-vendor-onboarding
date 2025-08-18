@@ -131,5 +131,6 @@ button:disabled {
     padding: 15px;
     margin-bottom: 20px;
     font-size: 0.95rem;
-    text-align: center; /* center the text for consistency */
+    text-align: center;       /* center the text for consistency */
+    border-radius: 6px;       /* slightly rounded corners */
 }
