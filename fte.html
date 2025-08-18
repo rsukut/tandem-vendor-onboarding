@@ -7,8 +7,8 @@
 
     // Set a session cookie
     function setSessionCookie(name, value) {
-        document.cookie = name + "=" + value + ";path=/";
-    }
+    document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+}
 
     // Read a session cookie
     function getSessionCookie(name) {
