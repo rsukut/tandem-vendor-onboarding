@@ -68,7 +68,7 @@
         cursor: pointer;
     " id="chatHeader">
         <span>Chat</span>
-        <span id="chatMinimize" style="cursor:pointer;">_</span>
+        <span id="chatMinimize" style="cursor:pointer;">&#9650;</span> <!-- up arrow -->
     </div>
     <!-- Body -->
     <div id="chatContent" style="padding: 15px; font-size: 14px; color: #000;">
@@ -88,17 +88,17 @@
     let minimized = false;
 
     chatMinimize.addEventListener('click', (e) => {
-        e.stopPropagation();
-        minimized = !minimized;
+    e.stopPropagation();
+    minimized = !minimized;
 
-        if(minimized){
-            chatContent.style.display = 'none';
-            chatMinimize.textContent = '+';
-        } else {
-            chatContent.style.display = 'block';
-            chatMinimize.textContent = '_';
-        }
-    });
+    if(minimized){
+        chatContent.style.display = 'none';
+        chatMinimize.innerHTML = '&#9650;'; // up arrow (minimized)
+    } else {
+        chatContent.style.display = 'block';
+        chatMinimize.innerHTML = '&#9660;'; // down arrow (maximized)
+    }
+});
 </script>
 <body>
     <header>
