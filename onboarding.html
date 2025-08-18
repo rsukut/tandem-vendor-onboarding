@@ -6,44 +6,27 @@
     <title>Tandem Vendor Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* Position the Home link in the same spot as the About link on index.html */
-        .page-link {
-            position: absolute;
-            top: 100px; /* adjust to match index.html header spacing */
-            right: 20px;
-            font-size: 1rem;
-        }
-
-        .page-link a {
-            text-decoration: none;
-            color: #0078d4;
-        }
-
-        .page-link a:hover {
-            text-decoration: underline;
-        }
-
         main {
             max-width: 800px;
-            margin: 120px auto 40px auto; /* push content down below header */
+            margin: 120px auto 40px auto;
             padding: 0 20px;
+            text-align: center;
         }
 
-        /* Responsive iframe container */
-        .iframe-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 75%; /* 4:3 aspect ratio, adjust if needed */
-            height: 0;
-        }
-
-        .iframe-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .start-button {
+            background-color: #FF6B00;
+            color: white;
+            padding: 0.75rem 1.5rem;
             border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .start-button:hover {
+            background-color: #e55b00;
         }
     </style>
 </head>
@@ -54,34 +37,27 @@
     </header>
 
     <main>
-        <div class="iframe-container">
-            <iframe id="vendorForm" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
-        </div>
+        <p>Click the button below to open the pre-filled Vendor Onboarding Form in a new tab.</p>
+        <a id="startForm" href="#" class="start-button" target="_blank">Begin Onboarding</a>
     </main>
 
     <script>
         // Grab parameters from URL
         const params = new URLSearchParams(window.location.search);
-        const team = params.get('org');    
-        const role = params.get('role');
-        const status = params.get('vendor');
+        const team = params.get('org') || '';
+        const role = params.get('role') || '';
+        const status = params.get('vendor') || '';
 
-        // Base form embed URL
-        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
+        // Base form URL (no iframe)
+        const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u";
 
-        // Construct pre-fill URL using the correct field IDs
-        const prefillURL = `${baseFormURL}&r1649743141ab40c1a8d0ad565f2ca489=${encodeURIComponent(team)}&r2ad9798441fe45d2b615a73e8fdb2ff8=${encodeURIComponent(role)}&r6dd353b4436543f296a7207a2a816d34=${encodeURIComponent(status)}`;
+        // Construct pre-fill URL using correct field IDs
+        const prefillURL = `${baseFormURL}&r1649743141ab40c1a8d0ad565f2ca489=${encodeURIComponent(team)}&r2ad9798441fe45d2b615a73e8fdb2ff8=${encodeURIComponent(role)}&r6dd353b4436543f296a7207a2a816d34=${encodeURIComponent(status)}&embed=true`;
 
-        // Set iframe src
-        document.getElementById("vendorForm").src = prefillURL;
+        // Set the button href to the pre-filled form
+        document.getElementById("startForm").href = prefillURL;
 
-        // Scroll to top when iframe loads
-        document.getElementById("vendorForm").onload = function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-    </script>
-
-    <script>
+        // Optional: alert instructions when page loads
         window.onload = function() {
             alert(
                 "To begin onboarding, please ensure all blanks in the form are filled out completely.\n\n" +
@@ -94,7 +70,7 @@
     </script>
 
     <footer style="
-      background-color: #e5f2fa; /* light slate-blue tone */
+      background-color: #e5f2fa;
       color: #000000;
       text-align: center;
       padding: 50px 20px;
