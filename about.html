@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
+<script>
 (function() {
-    const PASSWORD = "Onboarding!"; // temporary password
+    const PASSWORD = "Onboarding!";
 
     // Set a session cookie
     function setSessionCookie(name, value) {
-        document.cookie = name + "=" + value + ";path=/";"; 
+        document.cookie = name + "=" + value + ";path=/";
     }
 
     // Read a session cookie
@@ -25,15 +25,15 @@
     while (attempts > 0) {
         const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
         if (input === PASSWORD) {
-            setSessionCookie("isLoggedIn", "true"); // remember login for this session
-            return; // allow access
+            setSessionCookie("isLoggedIn", "true");
+            return;
         }
         attempts--;
         alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
     }
 
     alert("Access denied.");
-    window.location.href = "error.html"; // redirect if failed
+    window.location.href = "error.html"; 
 })();
 </script>
     <meta charset="UTF-8" />
