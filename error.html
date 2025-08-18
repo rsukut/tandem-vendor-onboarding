@@ -84,7 +84,9 @@
     const chatContent = document.getElementById('chatContent');
     const chatToggle = document.getElementById('chatToggle');
 
-chatHeader.addEventListener('click', () => {
+    let minimized = true; // start minimized
+
+    chatHeader.addEventListener('click', () => {
         minimized = !minimized;
         if(minimized){
             chatContent.style.display = 'none';
