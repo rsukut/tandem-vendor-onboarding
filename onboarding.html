@@ -6,37 +6,26 @@
     <title>Tandem Vendor Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* Inline styles for header instructions */
-        .form-instructions {
-            text-align: center;
-            color: white;
-            font-size: 1.1rem;
-            margin: 0.5em 0;
+        /* Position the Home link in the same spot as the About link on index.html */
+        .page-link {
+            position: absolute;
+            top: 100px; /* adjust to match index.html header spacing */
+            right: 20px;
+            font-size: 1rem;
         }
-
-        header {
-            background-color: #001f4d; /* navy blue bar */
-            padding: 1em;
+        .page-link a {
+            text-decoration: none;
+            color: #0078d4;
         }
-
-        header h1 {
-            text-align: center;
-            color: white;
-            margin-bottom: 0.5em;
+        .page-link a:hover {
+            text-decoration: underline;
         }
-
-        .logo {
-            display: block;
-            margin: 0.5em auto;
-            max-width: 200px;
-            height: auto;
-        }
-
         main {
-            padding: 1em;
+            max-width: 800px;
+            margin: 120px auto 40px auto; /* push content down below header */
+            padding: 0 20px;
         }
     </style>
-</head>
 <body>
     <header>
         <h1>Vendor Onboarding Form</h1>
