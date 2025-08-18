@@ -110,9 +110,8 @@ button:disabled {
 }
 
 .home-link {
-    position: absolute;  /* absolute positioning relative to main */
-    top: 20px;
-    right: 20px;
+    display: inline-block; 
+    margin-top: 20px;  /* space below main content */
     color: #0078d4;
     text-decoration: none;
     font-weight: bold;
