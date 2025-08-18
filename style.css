@@ -124,3 +124,12 @@ button:disabled {
     text-align: right;   /* aligns Home link to the right */
     margin: 10px 20px;   /* space from edges */
 }
+
+.instruction-box {
+    border: 1px solid red;
+    background-color: #ffe6e6; /* light red background for emphasis */
+    padding: 15px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    text-align: center; /* center the text for consistency */
+}
