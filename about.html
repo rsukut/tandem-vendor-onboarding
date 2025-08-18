@@ -76,6 +76,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 9999;
     font-family: sans-serif;
+    overflow: hidden; /* needed for slide effect */
 ">
     <!-- Header with minimize button -->
     <div style="
@@ -87,14 +88,21 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-    ">
+    " id="chatHeader">
         <span>Chat</span>
-        <span id="chatMinimize" style="cursor:pointer;">&#9660;</span> <!-- down arrow because chat is open -->
+        <span id="chatMinimize" style="cursor:pointer;">&#9660;</span> <!-- down arrow initially -->
     </div>
+
     <!-- Body -->
-    <div id="chatContent" style="padding: 15px; font-size: 14px; color: #000;">
+    <div id="chatContent" style="
+        padding: 15px; 
+        font-size: 14px; 
+        color: #000;
+        height: auto; 
+        transition: height 0.3s ease; /* slide animation */
+    ">
         <p>
-            For questions or updates, please <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" style="color:#0078d4; text-decoration:underline;">send us a Teams message</a>.
+           For questions or updates, please <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" style="color:#0078d4; text-decoration:underline;">send us a Teams message</a>. 
         </p>
     </div>
 </div>
@@ -105,18 +113,24 @@
 
     let minimized = false; // start maximized
 
-chatMinimize.addEventListener('click', (e) => {
-    e.stopPropagation();
-    minimized = !minimized;
+    // store natural height for animation
+    const fullHeight = chatContent.scrollHeight + "px";
+    chatContent.style.height = fullHeight;
 
-    if(minimized){
-        chatContent.style.display = 'none';
-        chatMinimize.innerHTML = '&#9650;'; // up arrow (minimized)
-    } else {
-        chatContent.style.display = 'block';
-        chatMinimize.innerHTML = '&#9660;'; // down arrow (maximized)
-    }
-});
+    chatMinimize.addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimized = !minimized;
+
+        if(minimized){
+            // slide up
+            chatContent.style.height = '0';
+            chatMinimize.innerHTML = '&#9650;'; // up arrow
+        } else {
+            // slide down
+            chatContent.style.height = fullHeight;
+            chatMinimize.innerHTML = '&#9660;'; // down arrow
+        }
+    });
 </script>
 <body>
     <header>
