@@ -3,7 +3,7 @@
 <head>
 <script>
 (function() {
-    const PASSWORD = "Onboarding!";
+    const PASSWORD = "Onboarding!"; // temporary password
 
     // Set a session cookie
     function setSessionCookie(name, value) {
@@ -17,23 +17,24 @@
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
 
-    // Skip prompt if already logged in
+    // If already logged in this session, skip prompt
     if (getSessionCookie("isLoggedIn") === "true") return;
 
-    // Prompt user for password
+    // Prompt for password
     let attempts = 3;
     while (attempts > 0) {
-        const input = prompt("Please enter the password to access the Tandem Onboarding Tool:");
+        const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
         if (input === PASSWORD) {
-            setSessionCookie("isLoggedIn", "true");
-            return;
+            setSessionCookie("isLoggedIn", "true"); // remember login for this session
+            return; // allow access
         }
         attempts--;
         alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
     }
 
+    // If all attempts fail, redirect to error page
     alert("Access denied.");
-    window.location.href = "error.html"; 
+    window.location.href = "error.html";
 })();
 </script>
     <meta charset="UTF-8" />
