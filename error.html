@@ -37,6 +37,54 @@
         }
     </style>
 </head>
+    <!-- Chat Bubble for Error Page -->
+<div id="chatBubble" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 250px;
+    font-family: sans-serif;
+    z-index: 1000;
+">
+    <!-- Header / Minimize bar -->
+    <div id="chatHeader" style="
+        background-color: #0078d4;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 8px 8px 0 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    ">
+        <span>Need Help?</span>
+        <span id="chatToggle" style="font-weight: bold;">&#9650;</span> <!-- up arrow for expand/minimize -->
+    </div>
+
+    <!-- Content -->
+    <div id="chatContent" style="
+        display: none;
+        background-color: #f1f1f1;
+        color: #000;
+        padding: 12px;
+        border-radius: 0 0 8px 8px;
+        font-size: 13px;
+        line-height: 1.4;
+    ">
+        <p>
+            If you forgot the password or need information updated, please
+            <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" 
+               style="color:#0078d4; text-decoration: underline;">send us a Teams message</a>.
+        </p>
+    </div>
+</div>
+
+<script>
+    const chatHeader = document.getElementById('chatHeader');
+    const chatContent = document.getElementById('chatContent');
+    const chatToggle = document.getElementById('chatToggle');
+
+    chatHeader.addEve
 <body>
     <header>
         <h1>Vendor Onboarding Tool</h1>
