@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Onboarding Tool Instructions for Use</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #000;
+        }
+        header {
+            background-color: #e5f2fa;
+            padding: 20px;
+            text-align: center;
+        }
+        header img {
+            max-width: 160px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #0078d4;
+        }
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        h2 {
+            color: #0078d4;
+            margin-top: 30px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 15px;
+        }
+        .bold-label {
+            font-weight: bold;
+        }
+        a {
+            color: #0078d4;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<!-- Chat Bubble -->
+<div id="chatBubble" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px; /* constant width */
+    max-width: 90%;
+    background-color: #f0f4f8;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-family: sans-serif;
+    overflow: hidden; /* needed for slide effect */
+">
+    <!-- Header with minimize button -->
+    <div style="
+        background-color: #0078d4;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+    " id="chatHeader">
+        <span>Chat</span>
+        <span id="chatMinimize" style="cursor:pointer;">&#9660;</span> <!-- down arrow initially -->
+    </div>
+
+    <!-- Body -->
+    <div id="chatContent" style="
+        padding: 15px; 
+        font-size: 14px; 
+        color: #000;
+        height: auto; 
+        transition: height 0.3s ease; /* slide animation */
+    ">
+        <p>
+            For more information about this tool, please head to our <a href="about.html" style="color:#0078d4; text-decoration:underline;">About</a> page!
+        </p>
+        <p>
+           For questions or updates, please <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" style="color:#0078d4; text-decoration:underline;">send us a Teams message</a>. 
+        </p>
+    </div>
+</div>
+
+<script>
+    const chatContent = document.getElementById('chatContent');
+    const chatMinimize = document.getElementById('chatMinimize');
+
+    let minimized = false; // start maximized
+
+    // store natural height for animation
+    const fullHeight = chatContent.scrollHeight + "px";
+    chatContent.style.height = fullHeight;
+
+    chatMinimize.addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimized = !minimized;
+
+        if(minimized){
+            // slide up
+            chatContent.style.height = '0';
+            chatMinimize.innerHTML = '&#9650;'; // up arrow
+        } else {
+            // slide down
+            chatContent.style.height = fullHeight;
+            chatMinimize.innerHTML = '&#9660;'; // down arrow
+        }
+    });
+</script>
+<body>
+<header>
+    <img src="images/tandemlogo.png" alt="Tandem Diabetes Logo">
+    <h1>Onboarding Tool Instructions for Use</h1>
+</header>
+
+<main>
+    <h2>To use the onboarding tool:</h2>
+    <ol>
+        <li>
+            Select your <span class="bold-label">Team</span> based on the team's director.
+            <ul>
+                <li><span class="bold-label">Foundation:</span> Chris Jung</li>
+                <li><span class="bold-label">Operations:</span> Darrel Cox</li>
+                <li><span class="bold-label">Pump:</span> Paul Harris</li>
+                <li><span class="bold-label">Test:</span> Rohit Vij</li>
+            </ul>
+        </li>
+
+        <li>
+            Select the <span class="bold-label">Role</span> of the onboarding employee or vendor. 
+            If the role is not present in the list or a new role needs to be added, please 
+            <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+        </li>
+
+        <li>
+            Select the <span class="bold-label">Status</span>. Available statuses:
+            <ul>
+                <li><span class="bold-label">FTE:</span> Full-time employee, working directly for Tandem. Requires HR approval prior to onboarding.</li>
+                <li><span class="bold-label">US Vendor:</span> Vendor based in the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
+                <li><span class="bold-label">OUS Vendor:</span> Vendor based outside the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
+            </ul>
+            Once all three drop-downs are filled, the "Requirements" section will expand to show all listed requirements. Check this information before proceeding. If any information needs updating, please 
+            <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+        </li>
+
+        <li>
+            Click the orange <span class="bold-label">Begin Onboarding</span> button at the bottom of the page, below the "Requirements" section.
+        </li>
+
+        <li>
+            You will be directed to a new page with instructions for completing the Microsoft Form associated with your onboarding employee or vendor. Instructions are as follows:
+            <ul>
+                <li>Ensure all blanks in the form are filled out completely.</li>
+                <li>Several blanks will be pre-filled with information from the previous page. Do not update these fields—if a different Team, Role, or Status is needed, return to the home page and make a new selection before clicking "Begin Onboarding".</li>
+                <li>Once the form is filled out, click <span class="bold-label">Submit</span> in Microsoft Forms to start the automated process.</li>
+            </ul>
+        </li>
+
+        <li>
+            Complete the Microsoft Form entirely and click <span class="bold-label">Submit</span> at the bottom of the form.
+        </li>
+    </ol>
+
+    <p><strong>Note:</strong> If anything in the source data or on the website needs to be changed, updated, or removed, please contact the administrator via 
+        <a href="mailto:rsukut@tandemdiabetes.com">email</a> or 
+        <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank">Teams</a>.
+    </p>
+</main>
+</body>
+</html>
