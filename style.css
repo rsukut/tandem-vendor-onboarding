@@ -25,6 +25,18 @@ header h1 {
     font-size: 1.8rem;
 }
 
+/* Full-height flex layout for footer */
+html, body {
+    height: 100%;           /* Make body full height */
+    display: flex;          /* Flex container to stack content */
+    flex-direction: column; /* Stack header, main, footer vertically */
+    margin: 0;              /* Already in your body, but safe to repeat */
+}
+
+main {
+    flex: 1;                /* Main content grows to fill remaining space */
+}
+
 /* Onboarding form instructions */
 .form-instructions {
     color: white;
