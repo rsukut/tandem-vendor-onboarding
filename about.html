@@ -63,6 +63,55 @@
         }
     </style>
 </head>
+<!-- Chat Bubble -->
+<div id="chatBubble" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    max-width: 90%;
+    background-color: #0078d4;
+    color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    font-family: sans-serif;
+    z-index: 9999;
+    overflow: hidden;
+    transition: height 0.3s ease;
+">
+    <div id="chatHeader" style="
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        background-color: #005a9e;
+        text-align: center;
+    ">Chat with Admin</div>
+    <div id="chatContent" style="
+        display: none;
+        padding: 10px 15px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #fff;
+        background-color: #0078d4;
+    ">
+        If you have any questions or need updates made, please 
+        <a href="https://teams.microsoft.com/l/chat/0/0?users=you@company.com" target="_blank" 
+           style="color: #ffeb3b; text-decoration: underline;">send us a Teams message</a>!
+    </div>
+</div>
+
+<script>
+    const chatHeader = document.getElementById('chatHeader');
+    const chatContent = document.getElementById('chatContent');
+
+    chatHeader.addEventListener('click', () => {
+        if (chatContent.style.display === 'none' || chatContent.style.display === '') {
+            chatContent.style.display = 'block';
+        } else {
+            chatContent.style.display = 'none';
+        }
+    });
+</script>
 <body>
     <header>
         <h1>About the Vendor Onboarding Tool</h1>
