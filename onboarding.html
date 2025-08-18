@@ -13,19 +13,40 @@
             right: 20px;
             font-size: 1rem;
         }
+
         .page-link a {
             text-decoration: none;
             color: #0078d4;
         }
+
         .page-link a:hover {
             text-decoration: underline;
         }
+
         main {
             max-width: 800px;
             margin: 120px auto 40px auto; /* push content down below header */
             padding: 0 20px;
         }
+
+        /* Responsive iframe container */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 aspect ratio, adjust if needed */
+            height: 0;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
+</head>
 <body>
     <header>
         <h1>Vendor Onboarding Form</h1>
@@ -33,7 +54,9 @@
     </header>
 
     <main>
-        <iframe id="vendorForm" src="" width="100%" frameborder="0" style="border:none; max-width:100%;" allowfullscreen></iframe>
+        <div class="iframe-container">
+            <iframe id="vendorForm" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+        </div>
     </main>
 
     <script>
@@ -42,58 +65,57 @@
         const team = params.get('org');    
         const role = params.get('role');
         const status = params.get('vendor');
-        
+
         // Base form embed URL
         const baseFormURL = "https://forms.office.com/Pages/ResponsePage.aspx?id=OY_eoelyzEiJSfWjQTzP5_FgOORinblFjTIfcjUxlWxUNUZVUFBSSkkyNlJQQzdHNFIxVkFMVUxXUS4u&embed=true";
-        
+
         // Construct pre-fill URL using the correct field IDs
         const prefillURL = `${baseFormURL}&r1649743141ab40c1a8d0ad565f2ca489=${encodeURIComponent(team)}&r2ad9798441fe45d2b615a73e8fdb2ff8=${encodeURIComponent(role)}&r6dd353b4436543f296a7207a2a816d34=${encodeURIComponent(status)}`;
-        
+
         // Set iframe src
         document.getElementById("vendorForm").src = prefillURL;
-        
-        // Optional: set height
-        document.getElementById("vendorForm").style.height = "1200px";
-        
-        // Optional: scroll to top when form loads
+
+        // Scroll to top when iframe loads
         document.getElementById("vendorForm").onload = function() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
     </script>
+
     <script>
-window.onload = function() {
-    alert(
-        "To begin onboarding, please ensure all blanks in the form are filled out completely.\n\n" +
-        "Several blanks have already been pre-filled with information from the previous page. " +
-        "Please do not update these items—if a different team, role, or status is needed, use your browser's back button " +
-        "and make a new selection before clicking 'Begin onboarding'.\n\n" +
-        "Once the form is filled out, you must click 'Submit' for the automated process to begin."
-    );
-};
+        window.onload = function() {
+            alert(
+                "To begin onboarding, please ensure all blanks in the form are filled out completely.\n\n" +
+                "Several blanks have already been pre-filled with information from the previous page. " +
+                "Please do not update these items—if a different team, role, or status is needed, use your browser's back button " +
+                "and make a new selection before clicking 'Begin onboarding'.\n\n" +
+                "Once the form is filled out, you must click 'Submit' for the automated process to begin."
+            );
+        };
     </script>
+
+    <footer style="
+      background-color: #e5f2fa; /* light slate-blue tone */
+      color: #000000;
+      text-align: center;
+      padding: 50px 20px;
+      font-family: sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+    ">
+      <div style="margin-bottom: 15px;">
+        <img src="/tandem-vendor-onboarding/images/tndmfooter.JPG" alt="Tandem Diabetes Care Logo" style="max-width:160px; height:auto;">
+      </div>
+      <div style="margin-bottom: 12px;">
+        <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank"
+           style="color: #000000; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+        <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank"
+           style="color: #000000; text-decoration: none; margin: 0 10px;">Terms of Use</a> |
+        <a href="#top"
+           style="color: #000000; text-decoration: none; margin: 0 10px;">Back to Top</a>
+      </div>
+      <div style="font-size: 11px; margin-top: 5px;">
+        © 2025 Tandem Diabetes Care, Inc. All rights reserved.
+      </div>
+    </footer>
 </body>
-<footer style="
-  background-color: #e5f2fa; /* light slate-blue tone */
-  color: #000000;
-  text-align: center;
-  padding: 50px 20px;
-  font-family: sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
-">
-  <div style="margin-bottom: 15px;">
-    <img src="/tandem-vendor-onboarding/images/tndmfooter.JPG" alt="Tandem Diabetes Care Logo" style="max-width:160px; height:auto;">
-  </div>
-  <div style="margin-bottom: 12px;">
-    <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank"
-       style="color: #000000; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
-    <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank"
-       style="color: #000000; text-decoration: none; margin: 0 10px;">Terms of Use</a> |
-    <a href="#top"
-       style="color: #000000; text-decoration: none; margin: 0 10px;">Back to Top</a>
-  </div>
-  <div style="font-size: 11px; margin-top: 5px;">
-    © 2025 Tandem Diabetes Care, Inc. All rights reserved.
-  </div>
-</footer>
 </html>
