@@ -81,15 +81,63 @@
     </div>
 </div>
 
-<script>
-    const chatHeader = document.getElementById('chatHeader');
-    const chatContent = document.getElementById('chatContent');
+<!-- Chat Bubble -->
+<div id="chatBubble" style="
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 320px;
+    max-width: 90%;
+    background-color: #f0f4f8;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 9999;
+    font-family: sans-serif;
+">
+    <!-- Header with minimize button -->
+    <div style="
+        background-color: #0078d4;
+        color: white;
+        padding: 10px;
+        border-radius: 10px 10px 0 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: default;
+    ">
+        <span>Chat</span>
+        <span id="chatMinimize" style="cursor:pointer;">_</span>
+    </div>
+    <!-- Body -->
+    <div id="chatContent" style="padding: 15px; font-size: 14px; color: #000;">
+        <p>
+            For basic information on the tool and instructions, please head to our <a href="about.html" style="color:#0078d4; text-decoration:underline;">About</a> page!
+        </p>
+        <p>
+           For questions or updates, please <a href="https://teams.microsoft.com/l/chat/0/0?users=youremail@domain.com" target="_blank" style="color:#0078d4; text-decoration:underline;">send us a Teams message</a>. 
+        </p>
+    </div>
+</div>
 
-    chatHeader.addEventListener('click', () => {
-        if (chatContent.style.display === 'none' || chatContent.style.display === '') {
-            chatContent.style.display = 'block';
-        } else {
+<script>
+    const chatBubble = document.getElementById('chatBubble');
+    const chatMinimize = document.getElementById('chatMinimize');
+
+    let minimized = false;
+
+    chatMinimize.addEventListener('click', () => {
+        minimized = !minimized;
+        if(minimized){
             chatContent.style.display = 'none';
+            chatBubble.style.width = '50px';
+            chatBubble.style.height = '50px';
+            chatMinimize.textContent = '+';
+        } else {
+            chatContent.style.display = 'block';
+            chatBubble.style.width = '320px';
+            chatBubble.style.height = 'auto';
+            chatMinimize.textContent = '_';
         }
     });
 </script>
