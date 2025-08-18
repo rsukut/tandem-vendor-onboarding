@@ -38,7 +38,7 @@
     </style>
 </head>
     <!-- Chat Bubble for Error Page -->
-<div id="chatBubble" style="
+    <div id="chatBubble" style="
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -84,7 +84,17 @@
     const chatContent = document.getElementById('chatContent');
     const chatToggle = document.getElementById('chatToggle');
 
-    chatHeader.addEve
+chatHeader.addEventListener('click', () => {
+        minimized = !minimized;
+        if(minimized){
+            chatContent.style.display = 'none';
+            chatToggle.innerHTML = '&#9650;'; // up arrow
+        } else {
+            chatContent.style.display = 'block';
+            chatToggle.innerHTML = '&#9660;'; // down arrow
+        }
+    });
+</script>
 <body>
     <header>
         <h1>Vendor Onboarding Tool</h1>
