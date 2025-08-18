@@ -1,6 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+  const PASSWORD = "Onboarding!"; // set your password
+
+  function setCookie(name, value) {
+    document.cookie = name + "=" + value + ";path=/"; // session cookie
+  }
+
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  // check if user is already logged in
+  if (getCookie("isLoggedIn") !== "true") {
+    let attempts = 3;
+    while (attempts > 0) {
+      const userInput = prompt("Enter the site password:");
+      if (userInput === PASSWORD) {
+        setCookie("isLoggedIn", "true");
+        break;
+      } else {
+        attempts--;
+        alert(`Incorrect password. ${attempts} attempt(s) remaining.`);
+      }
+      if (attempts === 0) {
+        alert("No attempts left. Reload the page to try again.");
+        document.body.innerHTML = ""; // hide page content
+      }
+    }
+  }
+</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Access Denied</title>
