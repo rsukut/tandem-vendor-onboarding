@@ -6,11 +6,19 @@
     <title>Tandem Vendor Onboarding Tool</title>
     <link rel="stylesheet" href="style.css" />
     <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
         main {
             max-width: 800px;
             margin: 120px auto 40px auto;
             padding: 0 20px;
             text-align: center;
+            flex: 1; /* allows main to grow and push footer down */
         }
 
         .start-button {
@@ -39,7 +47,8 @@
     <main>
         <p>Click the button below to open the pre-filled Vendor Onboarding Form in a new tab.</p>
         <a id="startForm" href="#" class="start-button" target="_blank">Begin Onboarding</a>
-    <a href="index.html" class="home-link">Home</a>
+        <br><br>
+        <a href="index.html" class="home-link">Home</a>
     </main>
 
     <script>
