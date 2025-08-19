@@ -95,6 +95,67 @@ footer.site-footer a {
   margin: 0 10px;
 }
 
+/* Chat Bubble (Light Mode) */
+.chat-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  font-family: sans-serif;
+  z-index: 1000;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  background-color: #f0f4f8;
+  color: #000;
+}
+
+.chat-header {
+  background-color: #0078d4;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.chat-content {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.4;
+  height: 0; /* start minimized */
+  overflow: hidden;
+  transition: height 0.3s ease;
+  background-color: #f1f1f1;
+  color: #000;
+}
+
+.chat-content a {
+  color: #0078d4;
+  text-decoration: underline;
+}
+
+/* Dark Mode */
+body.dark-mode .chat-bubble {
+  background-color: #2c2c2c;
+  color: #e0e0e0;
+}
+
+body.dark-mode .chat-header {
+  background-color: #1f1f1f;
+  color: #fff;
+}
+
+body.dark-mode .chat-content {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+body.dark-mode .chat-content a {
+  color: #90caf9;
+}
 /* Dark mode */
 body.dark-mode footer.site-footer {
   background-color: #1e1e1e;
