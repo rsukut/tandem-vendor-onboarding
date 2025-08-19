@@ -22,7 +22,7 @@
             darkModeToggle.textContent = darkNow ? "Light Mode" : "Dark Mode";
             if (footerLogo) footerLogo.src = darkNow
                 ? '/tandem-vendor-onboarding/images/tndmfooterdark.png'
-                : '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+                : '/tandem-vendor-onboarding/images/tndmfooter.jpg';
             localStorage.setItem('darkMode', darkNow);
         });
     }
