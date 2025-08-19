@@ -145,37 +145,14 @@
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const toggle = document.getElementById("chat-toggle");
-  const chat = document.querySelector(".chat-bubble");
-  const chatContent = document.getElementById("chatContent");
-  const chatMinimize = document.getElementById("chatMinimize");
+  const chat = document.getElementById("chatBubble");
 
   if (toggle && chat) {
     toggle.addEventListener("click", function () {
       if (chat.style.display === "none" || chat.style.display === "") {
-        chat.style.display = "block";
-
-        // Make chat expanded automatically on mobile
-        chatContent.style.height = chatContent.scrollHeight + "px";
-        chatMinimize.innerHTML = "&#9660;"; // down arrow
+        chat.style.display = "block"; // show expanded chat
       } else {
-        chat.style.display = "none";
-      }
-    });
-  }
-
-  // Minimize arrow still works if you want
-  if (chatMinimize) {
-    let minimized = false;
-    chatMinimize.addEventListener("click", (e) => {
-      e.stopPropagation();
-      minimized = !minimized;
-
-      if (minimized) {
-        chatContent.style.height = "0";
-        chatMinimize.innerHTML = "&#9650;"; // up arrow
-      } else {
-        chatContent.style.height = chatContent.scrollHeight + "px";
-        chatMinimize.innerHTML = "&#9660;"; // down arrow
+        chat.style.display = "none";  // hide
       }
     });
   }
