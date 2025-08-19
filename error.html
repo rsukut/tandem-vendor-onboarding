@@ -38,46 +38,20 @@
     </style>
 </head>
 <!-- Chat Bubble for Error Page -->
-<div id="chatBubble" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 250px;
-    font-family: sans-serif;
-    z-index: 1000;
-    overflow: hidden; /* needed for sliding */
-">
+<div id="chatBubble" class="chat-bubble">
     <!-- Header / Minimize bar -->
-    <div id="chatHeader" style="
-        background-color: #0078d4;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 8px 8px 0 0;
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    ">
+    <div id="chatHeader" class="chat-header">
         <span>Need Help?</span>
-        <span id="chatToggle" style="font-weight: bold;">&#9650;</span> <!-- up arrow initially -->
+        <span id="chatToggle">&#9650;</span> <!-- up arrow initially -->
     </div>
 
     <!-- Content -->
-    <div id="chatContent" style="
-        height: 0; /* start minimized */
-        background-color: #f1f1f1;
-        color: #000;
-        padding: 12px;
-        border-radius: 0 0 8px 8px;
-        font-size: 13px;
-        line-height: 1.4;
-        overflow: hidden; 
-        transition: height 0.3s ease;
-    ">
+    <div id="chatContent" class="chat-content">
         <p>
             If you forgot the password or need information updated, please
-            <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank" 
-               style="color:#0078d4; text-decoration: underline;">send us a Teams message</a>.
+            <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank">
+                send us a Teams message
+            </a>.
         </p>
     </div>
 </div>
