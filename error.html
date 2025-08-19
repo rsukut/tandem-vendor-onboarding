@@ -111,22 +111,27 @@
   </div>
 </footer>
 <script>
-  const toggle = document.getElementById('darkModeToggle');
-  const body = document.body;
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+const footerLogo = document.querySelector('footer img'); // assumes only one img in footer
 
-  // Check saved preference
-  if(localStorage.getItem('darkMode') === 'true'){
+// Apply saved preference on page load
+if(localStorage.getItem('darkMode') === 'true'){
     body.classList.add('dark-mode');
-    toggle.textContent = "Light Mode";
-  }
+    darkModeToggle.textContent = "Light Mode";
+    footerLogo.src = 'images/tndmfooterdark.png';
+} else {
+    footerLogo.src = 'images/tndmfooter.JPG';
+}
 
-  toggle.addEventListener('click', function(e) {
+// Toggle dark mode on click
+darkModeToggle.addEventListener('click', function(e){
     e.preventDefault();
     body.classList.toggle('dark-mode');
     const darkModeOn = body.classList.contains('dark-mode');
-    toggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
-    localStorage.setItem('darkMode', darkModeOn); // saves preference
-  });
-</script>
+    darkModeToggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
+    footerLogo.src = darkModeOn ? 'images/tndmfooterdark.png' : 'images/tndmfooter.JPG';
+    localStorage.setItem('darkMode', darkModeOn);
+});
 </body>
 </html>
