@@ -163,27 +163,36 @@
 
         <p>For questions or issues, <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a> directly.</p>
     </main>
-</body>
-<footer style="
-  background-color: #e5f2fa; /* light slate-blue tone */
-  color: #000000;
-  text-align: center;
-  padding: 50px 20px;
-  font-family: sans-serif;
-  font-size: 13px;
-  line-height: 1.5;
-">
-  <div style="margin-bottom: 15px;">
-    <img src="/tandem-vendor-onboarding/images/tndmfooter.jpg" alt="Tandem Diabetes Care Logo" style="max-width:160px; height:auto;">
+<footer class="site-footer">
+  <div>
+    <img src="/tandem-vendor-onboarding/images/tndmfooter.jpg" alt="Tandem Diabetes Care Logo">
   </div>
-  <div style="margin-bottom: 12px;">
-    <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank"
-       style="color: #000000; text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
-    <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank"
-       style="color: #000000; text-decoration: none; margin: 0 10px;">Terms of Use</a>
+  <div>
+    <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank">Privacy Policy</a> |
+    <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank">Terms of Use</a> |
+    <a href="#" id="darkModeToggle">Dark Mode</a>
   </div>
-  <div style="font-size: 11px; margin-top: 5px;">
+  <div>
     © 2025 Tandem Diabetes Care, Inc. All rights reserved.
   </div>
 </footer>
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Check saved preference
+  if(localStorage.getItem('darkMode') === 'true'){
+    body.classList.add('dark-mode');
+    toggle.textContent = "Light Mode";
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    body.classList.toggle('dark-mode');
+    const darkModeOn = body.classList.contains('dark-mode');
+    toggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
+    localStorage.setItem('darkMode', darkModeOn); // saves preference
+  });
+</script>
+</body>
 </html>
