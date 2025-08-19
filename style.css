@@ -218,8 +218,32 @@ body.dark-mode a:hover {
   color: #bbdefb;
 }
 
-/* Footer */
-body.dark-mode footer {
+/* Footer default (light mode) */
+footer.site-footer {
+  background-color: #e5f2fa;
+  color: #000;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+footer.site-footer div {
+  margin-bottom: 12px; /* adjust per div if needed */
+}
+
+footer.site-footer a {
+  color: #000;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+body.dark-mode footer.site-footer {
   background-color: #1e1e1e;
   color: #cccccc;
+}
+
+body.dark-mode footer.site-footer a {
+  color: #90caf9;
 }
