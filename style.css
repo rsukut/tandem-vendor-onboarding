@@ -151,3 +151,39 @@ button:disabled {
 .content-wrapper {
     margin-top: 40px;
 }
+
+/* Default (light mode) is what you already have */
+
+/* Dark Mode */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+/* Header */
+body.dark-mode header {
+  background-color: #1f1f1f;
+  color: #ffffff;
+}
+
+/* Error message box */
+body.dark-mode .error-message {
+  background-color: #2c2c2c;
+  border: 1px solid #444;
+  color: #ffb4b4;
+}
+
+/* Links */
+body.dark-mode a {
+  color: #90caf9; /* softer blue */
+}
+
+body.dark-mode a:hover {
+  color: #bbdefb;
+}
+
+/* Footer */
+body.dark-mode footer {
+  background-color: #1e1e1e;
+  color: #cccccc;
+}
