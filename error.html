@@ -115,23 +115,29 @@ const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 const footerLogo = document.querySelector('footer img'); // assumes only one img in footer
 
-// Apply saved preference on page load
-if(localStorage.getItem('darkMode') === 'true'){
-    body.classList.add('dark-mode');
-    darkModeToggle.textContent = "Light Mode";
-    footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
-} else {
-    footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.JPG';
-}
+// Safety check
+if(darkModeToggle && footerLogo){
+    // Apply saved preference on page load
+    if(localStorage.getItem('darkMode') === 'true'){
+        body.classList.add('dark-mode');
+        darkModeToggle.textContent = "Light Mode";
+        footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
+    } else {
+        footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+    }
 
-// Toggle dark mode on click
-darkModeToggle.addEventListener('click', function(e){
-    e.preventDefault();
-    body.classList.toggle('dark-mode');
-    const darkModeOn = body.classList.contains('dark-mode');
-    darkModeToggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
-    footerLogo.src = darkModeOn ? '/tandem-vendor-onboarding/images/tndmfooterdark.png' : '/tandem-vendor-onboarding/images/tndmfooter.JPG';
-    localStorage.setItem('darkMode', darkModeOn);
-});
+    // Toggle dark mode on click
+    darkModeToggle.addEventListener('click', function(e){
+        e.preventDefault();
+        body.classList.toggle('dark-mode');
+        const darkModeOn = body.classList.contains('dark-mode');
+        darkModeToggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
+        footerLogo.src = darkModeOn 
+            ? '/tandem-vendor-onboarding/images/tndmfooterdark.png' 
+            : '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+        localStorage.setItem('darkMode', darkModeOn);
+    });
+}
+</script>
 </body>
 </html>
