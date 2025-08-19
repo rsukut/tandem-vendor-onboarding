@@ -443,6 +443,11 @@ body.dark-mode footer.site-footer a {
     max-width: 350px;
   }
 
+.chat-bubble .chat-content {
+    height: auto !important;
+    padding: 12px;
+  }
+
 /* -------------------------------
    Responsive adjustments
    ------------------------------- */
