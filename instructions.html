@@ -180,35 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Dark mode toggle: adjust all expanded content automatically
-    const darkModeToggle = document.getElementById("darkModeToggle");
-    const body = document.body;
-
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener("click", e => {
-            e.preventDefault();
-            body.classList.toggle("dark-mode");
-
-            // Update footer logo
-            const footerLogo = document.querySelector("footer img");
-            if (footerLogo) {
-                footerLogo.src = body.classList.contains("dark-mode") 
-                    ? "/tandem-vendor-onboarding/images/tndmfooterdark.png" 
-                    : "/tandem-vendor-onboarding/images/tndmfooter.png";
-            }
-
-            // Update dark mode preference
-            localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
-        });
-    }
-
-    // Apply saved dark mode preference on page load
-    if (localStorage.getItem("darkMode") === "true") {
-        body.classList.add("dark-mode");
-    }
-});
 </script>
-</main>
 <footer class="site-footer">
   <div>
     <img src="/tandem-vendor-onboarding/images/tndmfooter.png" alt="Tandem Diabetes Logo" class="logo"
