@@ -115,5 +115,21 @@
 <script src="/tandem-vendor-onboarding/scripts/darkmode.js"></script>
 <!-- Chat Toggle Button (mobile only) -->
 <button id="chat-toggle">💬</button>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("chat-toggle");
+    const chat = document.querySelector(".chat-bubble");
+
+    if (toggle && chat) {
+      toggle.addEventListener("click", function () {
+        if (chat.style.display === "none" || chat.style.display === "") {
+          chat.style.display = "block";
+        } else {
+          chat.style.display = "none";
+        }
+      });
+    }
+  });
+</script>
 </body>
 </html>
