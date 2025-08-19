@@ -103,6 +103,24 @@
         }
     });
 </script>
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Check saved preference
+  if(localStorage.getItem('darkMode') === 'true'){
+    body.classList.add('dark-mode');
+    toggle.textContent = "Light Mode";
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    body.classList.toggle('dark-mode');
+    const darkModeOn = body.classList.contains('dark-mode');
+    toggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
+    localStorage.setItem('darkMode', darkModeOn); // saves preference
+  });
+</script>
 <body>
     <header>
         <h1>Vendor Onboarding Tool</h1>
