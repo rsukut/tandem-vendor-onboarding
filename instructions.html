@@ -204,26 +204,55 @@
 </style>
 
 <script>
-document.querySelectorAll(".collapsible").forEach(button => {
-    button.addEventListener("click", () => {
-        button.classList.toggle("active");
+document.addEventListener("DOMContentLoaded", () => {
+    const collapsibles = document.querySelectorAll(".collapsible");
+
+    // Setup each collapsible
+    collapsibles.forEach(button => {
         const content = button.nextElementSibling;
 
-        if (content.style.maxHeight) {
-            // Collapse
-            content.style.maxHeight = null;
-        } else {
-            // Expand
-            content.style.maxHeight = content.scrollHeight + "px";
-        }
-    });
-});
+        // Start expanded if desired
+        content.style.maxHeight = content.scrollHeight + "px";
 
-// Optional: On page load, ensure all content is expanded by default
-document.querySelectorAll(".content").forEach(content => {
-    content.style.maxHeight = content.scrollHeight + "px";
-    content.style.overflow = "hidden";  // required for smooth transition
-    content.style.transition = "max-height 0.3s ease";
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                // Collapse
+                content.style.maxHeight = "0";
+            } else {
+                // Expand
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+
+    // Dark mode toggle: adjust all expanded content automatically
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener("click", e => {
+            e.preventDefault();
+            body.classList.toggle("dark-mode");
+
+            // Update footer logo
+            const footerLogo = document.querySelector("footer img");
+            if (footerLogo) {
+                footerLogo.src = body.classList.contains("dark-mode") 
+                    ? "/tandem-vendor-onboarding/images/tndmfooterdark.png" 
+                    : "/tandem-vendor-onboarding/images/tndmfooter.png";
+            }
+
+            // Update dark mode preference
+            localStorage.setItem("darkMode", body.classList.contains("dark-mode"));
+        });
+    }
+
+    // Apply saved dark mode preference on page load
+    if (localStorage.getItem("darkMode") === "true") {
+        body.classList.add("dark-mode");
+    }
 });
 </script>
 </main>
