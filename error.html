@@ -123,25 +123,6 @@
     </div>
   
 </main>
-<script>
-  const toggle = document.getElementById('darkModeToggle');
-  const body = document.body;
-
-  // Check saved preference
-  if(localStorage.getItem('darkMode') === 'true'){
-    body.classList.add('dark-mode');
-    toggle.textContent = "Light Mode";
-  }
-
-  toggle.addEventListener('click', function(e) {
-    e.preventDefault();
-    body.classList.toggle('dark-mode');
-    const darkModeOn = body.classList.contains('dark-mode');
-    toggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
-    localStorage.setItem('darkMode', darkModeOn); // saves preference
-  });
-</script>
-</body>
 <footer style="
   background-color: #e5f2fa; /* light slate-blue tone */
   color: #000000;
@@ -165,4 +146,23 @@
     © 2025 Tandem Diabetes Care, Inc. All rights reserved.
   </div>
 </footer>
+<script>
+  const toggle = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Check saved preference
+  if(localStorage.getItem('darkMode') === 'true'){
+    body.classList.add('dark-mode');
+    toggle.textContent = "Light Mode";
+  }
+
+  toggle.addEventListener('click', function(e) {
+    e.preventDefault();
+    body.classList.toggle('dark-mode');
+    const darkModeOn = body.classList.contains('dark-mode');
+    toggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
+    localStorage.setItem('darkMode', darkModeOn); // saves preference
+  });
+</script>
+</body>
 </html>
