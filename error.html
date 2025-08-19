@@ -111,33 +111,35 @@
   </div>
 </footer>
 <script>
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-const footerLogo = document.querySelector('footer img'); // assumes only one img in footer
+(function(){
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const body = document.body;
+    const footerLogo = document.querySelector('footer img');
 
-// Safety check
-if(darkModeToggle && footerLogo){
     // Apply saved preference on page load
-    if(localStorage.getItem('darkMode') === 'true'){
+    const darkModeOn = localStorage.getItem('darkMode') === 'true';
+    if (darkModeOn) {
         body.classList.add('dark-mode');
-        darkModeToggle.textContent = "Light Mode";
-        footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
+        if (darkModeToggle) darkModeToggle.textContent = "Light Mode";
+        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
     } else {
-        footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.JPG';
     }
 
     // Toggle dark mode on click
-    darkModeToggle.addEventListener('click', function(e){
-        e.preventDefault();
-        body.classList.toggle('dark-mode');
-        const darkModeOn = body.classList.contains('dark-mode');
-        darkModeToggle.textContent = darkModeOn ? "Light Mode" : "Dark Mode";
-        footerLogo.src = darkModeOn 
-            ? '/tandem-vendor-onboarding/images/tndmfooterdark.png' 
-            : '/tandem-vendor-onboarding/images/tndmfooter.JPG';
-        localStorage.setItem('darkMode', darkModeOn);
-    });
-}
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', function(e){
+            e.preventDefault();
+            body.classList.toggle('dark-mode');
+            const darkNow = body.classList.contains('dark-mode');
+            darkModeToggle.textContent = darkNow ? "Light Mode" : "Dark Mode";
+            if (footerLogo) footerLogo.src = darkNow
+                ? '/tandem-vendor-onboarding/images/tndmfooterdark.png'
+                : '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+            localStorage.setItem('darkMode', darkNow);
+        });
+    }
+})();
 </script>
 </body>
 </html>
