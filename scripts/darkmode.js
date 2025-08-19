@@ -10,7 +10,7 @@
         if (darkModeToggle) darkModeToggle.textContent = "Light Mode";
         if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
     } else {
-        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.JPG';
+        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.jpg';
     }
 
     // Toggle dark mode on click
