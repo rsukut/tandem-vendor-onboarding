@@ -156,31 +156,6 @@
 }
 </style>
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-    const collapsibles = document.querySelectorAll(".collapsible");
-
-    // Setup each collapsible
-    collapsibles.forEach(button => {
-        const content = button.nextElementSibling;
-
-        // Start expanded if desired
-        content.style.maxHeight = content.scrollHeight + "px";
-
-        button.addEventListener("click", () => {
-            button.classList.toggle("active");
-
-            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
-                // Collapse
-                content.style.maxHeight = "0";
-            } else {
-                // Expand
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    });
-
-</script>
 <footer class="site-footer">
   <div>
     <img src="/tandem-vendor-onboarding/images/tndmfooter.png" alt="Tandem Diabetes Logo" class="logo"
@@ -196,5 +171,29 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </footer>
 <script src="/tandem-vendor-onboarding/scripts/darkmode.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const collapsibles = document.querySelectorAll(".collapsible");
+
+    collapsibles.forEach(button => {
+        const content = button.nextElementSibling;
+
+        // Start expanded
+        content.style.maxHeight = content.scrollHeight + "px";
+
+        button.addEventListener("click", () => {
+            button.classList.toggle("active");
+
+            if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                // Collapse
+                content.style.maxHeight = "0";
+            } else {
+                // Expand
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
