@@ -129,7 +129,7 @@ button:disabled {
     align-items: flex-end;  /* forces both links to the same right edge */
     gap: 5px;
     padding-right: 80px; /* adjust this value until it looks good */
-    padding-top: 80 px;
+    margin-top: 80 px;
 }
 
 .home-link-wrapper a.home-link {
