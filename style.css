@@ -116,19 +116,18 @@ button:disabled {
     font-weight: bold;
 }
 
-.home-link:hover {
-    text-decoration: underline;
+.home-link {
+    margin: 0;             /* reset browser default margin */
+    padding: 0;            /* reset padding */
+    text-align: right;
+    display: inline-block;
 }
 
 .home-link-wrapper {
-    position: fixed;       /* stays in place, doesn’t push content */
-    top: 120px;            /* adjust as needed */
-    right: 20px;           /* same for all pages */
     display: flex;
     flex-direction: column;
+    align-items: flex-end;  /* forces both links to the same right edge */
     gap: 5px;
-    text-align: right;
-    z-index: 1000;
 }
 
 .home-link-wrapper a.home-link {
