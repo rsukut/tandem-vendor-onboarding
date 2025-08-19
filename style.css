@@ -439,25 +439,30 @@ body.dark-mode footer.site-footer a {
   }
 
   /* Toggle button for chat */
+#chat-toggle {
+  display: none; /* default hidden */
+}
+
+/* Mobile (up to 767px) */
+@media (max-width: 767px) {
   #chat-toggle {
+    display: block;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    background: #0078d4;
-    color: #fff;
+    bottom: 80px; /* sits just above footer */
+    right: 20px;
+    background-color: orange;
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 1.5rem;
-    text-align: center;
-    line-height: 50px;
+    font-size: 24px;
+    color: white;
     cursor: pointer;
-    z-index: 10000;
+    z-index: 1001;
   }
 }
 
-/* Tablet */
+/* Tablet (768px – 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
   body {
     font-size: 17px;
