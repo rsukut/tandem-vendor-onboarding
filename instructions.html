@@ -135,47 +135,63 @@
     <h2>To use the onboarding tool:</h2>
     <ol>
         <li>
-            Select your <span class="bold-label">Team</span> based on the team's director.
-            <ul>
-                <li><span class="bold-label">Foundation:</span> Chris Jung</li>
-                <li><span class="bold-label">Operations:</span> Darrel Cox</li>
-                <li><span class="bold-label">Pump:</span> Paul Harris</li>
-                <li><span class="bold-label">Test:</span> Rohit Vij</li>
-            </ul>
+            <button class="collapsible">1. Select your <span class="bold-label">Team</span> based on the team's director.</button>
+            <div class="content">
+                <ul>
+                    <li><span class="bold-label">Foundation:</span> Chris Jung</li>
+                    <li><span class="bold-label">Operations:</span> Darrel Cox</li>
+                    <li><span class="bold-label">Pump:</span> Paul Harris</li>
+                    <li><span class="bold-label">Test:</span> Rohit Vij</li>
+                </ul>
+            </div>
         </li>
 
         <li>
-            Select the <span class="bold-label">Role</span> of the onboarding employee or vendor. 
-            If the role is not present in the list or a new role needs to be added, please 
-            <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+            <button class="collapsible">2. Select the <span class="bold-label">Role</span> of the onboarding employee or vendor.</button>
+            <div class="content">
+                <p>If the role is not present in the list or a new role needs to be added, please 
+                    <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+                </p>
+            </div>
         </li>
 
         <li>
-            Select the <span class="bold-label">Status</span>. Available statuses:
-            <ul>
-                <li><span class="bold-label">FTE:</span> Full-time employee, working directly for Tandem. Requires HR approval prior to onboarding.</li>
-                <li><span class="bold-label">US Vendor:</span> Vendor based in the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
-                <li><span class="bold-label">OUS Vendor:</span> Vendor based outside the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
-            </ul>
-            Once all three drop-downs are filled, the "Requirements" section will expand to show all listed requirements. Check this information before proceeding. If any information needs updating, please 
-            <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+            <button class="collapsible">3. Select the <span class="bold-label">Status</span>.</button>
+            <div class="content">
+                <ul>
+                    <li><span class="bold-label">FTE:</span> Full-time employee, working directly for Tandem. Requires HR approval prior to onboarding.</li>
+                    <li><span class="bold-label">US Vendor:</span> Vendor based in the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
+                    <li><span class="bold-label">OUS Vendor:</span> Vendor based outside the United States. Requires budget approval and a valid Lexion Contract number prior to onboarding.</li>
+                </ul>
+                <p>Once all three drop-downs are filled, the "Requirements" section will expand to show all listed requirements. Check this information before proceeding. If any information needs updating, please 
+                    <a href="mailto:rsukut@tandemdiabetes.com">contact the administrator</a>.
+                </p>
+            </div>
         </li>
 
         <li>
-            Click the orange <span class="bold-label">Begin Onboarding</span> button at the bottom of the page, below the "Requirements" section.
+            <button class="collapsible">4. Click the orange <span class="bold-label">Begin Onboarding</span> button</button>
+            <div class="content">
+                <p>Click at the bottom of the page, below the "Requirements" section.</p>
+            </div>
         </li>
 
         <li>
-            You will be directed to a new page with instructions for completing the Microsoft Form associated with your onboarding employee or vendor. Instructions are as follows:
-            <ul>
-                <li>Ensure all blanks in the form are filled out completely.</li>
-                <li>Several blanks will be pre-filled with information from the previous page. Do not update these fields—if a different Team, Role, or Status is needed, return to the home page and make a new selection before clicking "Begin Onboarding".</li>
-                <li>Once the form is filled out, click <span class="bold-label">Submit</span> in Microsoft Forms to start the automated process.</li>
-            </ul>
+            <button class="collapsible">5. Complete the Microsoft Form instructions</button>
+            <div class="content">
+                <ul>
+                    <li>Ensure all blanks in the form are filled out completely.</li>
+                    <li>Several blanks will be pre-filled from the previous page. Do not update these fields—if a different Team, Role, or Status is needed, return to the home page and make a new selection before clicking "Begin Onboarding".</li>
+                    <li>Once the form is filled out, click <span class="bold-label">Submit</span> in Microsoft Forms to start the automated process.</li>
+                </ul>
+            </div>
         </li>
 
         <li>
-            Complete the Microsoft Form entirely and click <span class="bold-label">Submit</span> at the bottom of the form.
+            <button class="collapsible">6. Submit the Microsoft Form</button>
+            <div class="content">
+                <p>Complete the form entirely and click <span class="bold-label">Submit</span> at the bottom of the form.</p>
+            </div>
         </li>
     </ol>
 
@@ -183,6 +199,50 @@
         <a href="mailto:rsukut@tandemdiabetes.com">email</a> or 
         <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank">Teams</a>.
     </p>
+</main>
+
+<style>
+.collapsible {
+    background-color: #0078d4;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+.collapsible:hover {
+    background-color: #005a9e;
+}
+.content {
+    padding: 0 15px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10px;
+}
+</style>
+
+<script>
+const collapsibles = document.querySelectorAll(".collapsible");
+collapsibles.forEach((btn) => {
+    btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        const content = this.nextElementSibling;
+        if(content.style.display === "block"){
+            content.style.display = "none";
+        } else {
+            content.style.display = "block";
+        }
+    });
+});
+</script>
 </main>
 </body>
 </html>
