@@ -503,7 +503,7 @@ body.dark-mode footer.site-footer a {
     position: fixed;
     bottom: 80px; /* sits just above footer */
     right: 20px;
-    background-color: blue;
+    background-color: #009ce8;
     border: none;
     border-radius: 50%;
     width: 50px;
