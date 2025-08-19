@@ -144,20 +144,43 @@
 <!-- Chat Toggle Button (mobile only) -->
 <button id="chat-toggle">💬</button>
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("chat-toggle");
-    const chat = document.querySelector(".chat-bubble");
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("chat-toggle");
+  const chat = document.querySelector(".chat-bubble");
+  const chatContent = document.getElementById("chatContent");
+  const chatMinimize = document.getElementById("chatMinimize");
 
-    if (toggle && chat) {
-      toggle.addEventListener("click", function () {
-        if (chat.style.display === "none" || chat.style.display === "") {
-          chat.style.display = "block";
-        } else {
-          chat.style.display = "none";
-        }
-      });
-    }
-  });
+  if (toggle && chat) {
+    toggle.addEventListener("click", function () {
+      if (chat.style.display === "none" || chat.style.display === "") {
+        chat.style.display = "block";
+
+        // Make chat expanded automatically on mobile
+        chatContent.style.height = chatContent.scrollHeight + "px";
+        chatMinimize.innerHTML = "&#9660;"; // down arrow
+      } else {
+        chat.style.display = "none";
+      }
+    });
+  }
+
+  // Minimize arrow still works if you want
+  if (chatMinimize) {
+    let minimized = false;
+    chatMinimize.addEventListener("click", (e) => {
+      e.stopPropagation();
+      minimized = !minimized;
+
+      if (minimized) {
+        chatContent.style.height = "0";
+        chatMinimize.innerHTML = "&#9650;"; // up arrow
+      } else {
+        chatContent.style.height = chatContent.scrollHeight + "px";
+        chatMinimize.innerHTML = "&#9660;"; // down arrow
+      }
+    });
+  }
+});
 </script>
 </body>
 </html>
