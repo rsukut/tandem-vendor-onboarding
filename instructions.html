@@ -204,17 +204,26 @@
 </style>
 
 <script>
-const collapsibles = document.querySelectorAll(".collapsible");
-collapsibles.forEach((btn) => {
-    btn.addEventListener("click", function() {
-        this.classList.toggle("active");
-        const content = this.nextElementSibling;
-        if(content.style.display === "block"){
-            content.style.display = "none";
+document.querySelectorAll(".collapsible").forEach(button => {
+    button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        const content = button.nextElementSibling;
+
+        if (content.style.maxHeight) {
+            // Collapse
+            content.style.maxHeight = null;
         } else {
-            content.style.display = "block";
+            // Expand
+            content.style.maxHeight = content.scrollHeight + "px";
         }
     });
+});
+
+// Optional: On page load, ensure all content is expanded by default
+document.querySelectorAll(".content").forEach(content => {
+    content.style.maxHeight = content.scrollHeight + "px";
+    content.style.overflow = "hidden";  // required for smooth transition
+    content.style.transition = "max-height 0.3s ease";
 });
 </script>
 </main>
