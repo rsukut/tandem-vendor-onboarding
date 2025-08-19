@@ -76,15 +76,47 @@ select {
 
 /* Collapsible boxes in dark mode */
 body.dark-mode .content {
-    background-color: #2c2c2c; /* dark gray background */
-    color: #e0e0e0;           /* light gray text */
-    border-radius: 0 0 5px 5px;
-    padding: 0 15px;
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+}
+
+.collapsible.active {
+    background-color: #005a9e;
 }
 
 /* Links inside collapsibles */
 body.dark-mode .content a {
     color: #90caf9;
+}
+
+.collapsible {
+    background-color: #0078d4;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 1rem;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+}
+
+.collapsible:hover {
+    background-color: #005a9e;
+}
+
+.content {
+    max-height: 0; /* start collapsed */
+    overflow: hidden;
+    background-color: #f1f1f1;
+    border-radius: 0 0 5px 5px;
+    margin-bottom: 10px;
+    padding: 0 15px;
+    transition: max-height 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    color: #000; /* default text color */
 }
 
 body.dark-mode .content a:hover {
