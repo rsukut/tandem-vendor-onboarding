@@ -128,7 +128,8 @@ button:disabled {
     flex-direction: column;
     align-items: flex-end;  /* forces both links to the same right edge */
     gap: 5px;
-    padding-right: 40px; /* adjust this value until it looks good */
+    padding-right: 80px; /* adjust this value until it looks good */
+    padding-top: 80 px;
 }
 
 .home-link-wrapper a.home-link {
