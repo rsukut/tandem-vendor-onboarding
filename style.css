@@ -121,8 +121,22 @@ button:disabled {
 }
 
 .home-link-wrapper {
-    text-align: right;   /* aligns Home link to the right */
-    margin: 10px 20px;   /* space from edges */
+    position: fixed;
+    top: 120px;       /* adjust to match header spacing */
+    right: 20px;      /* same for all pages */
+    display: flex;
+    flex-direction: column;  /* stack links vertically */
+    gap: 5px;               /* space between links */
+    text-align: right;       /* ensures text lines up exactly */
+    z-index: 1000;
+    padding: 0;
+    margin: 0;
+}
+
+.home-link-wrapper a.home-link {
+    text-decoration: none;
+    color: #0078d4;
+    display: block;  /* ensures full width alignment */
 }
 
 .instruction-box {
