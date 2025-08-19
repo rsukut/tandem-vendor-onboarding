@@ -74,6 +74,33 @@ select {
     border-radius: 4px;
 }
 
+/* Collapsible boxes in dark mode */
+body.dark-mode .content {
+    background-color: #2c2c2c; /* dark gray background */
+    color: #e0e0e0;           /* light gray text */
+    border-radius: 0 0 5px 5px;
+    padding: 0 15px;
+}
+
+/* Links inside collapsibles */
+body.dark-mode .content a {
+    color: #90caf9;
+}
+
+body.dark-mode .content a:hover {
+    color: #bbdefb;
+}
+
+/* Optional: adjust collapsible button in dark mode */
+body.dark-mode .collapsible {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .collapsible:hover {
+    background-color: #444444;
+}
+
 /* Footer default (light mode) */
 footer.site-footer {
   background-color: #e5f2fa;
