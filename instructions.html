@@ -54,43 +54,15 @@
     </style>
 </head>
 <!-- Chat Bubble -->
-<div id="chatBubble" style="
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 320px; /* constant width */
-    max-width: 90%;
-    background-color: #f0f4f8;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    z-index: 9999;
-    font-family: sans-serif;
-    overflow: hidden; /* needed for slide effect */
-">
+<div id="chatBubble" class="chat-bubble">
     <!-- Header with minimize button -->
-    <div style="
-        background-color: #0078d4;
-        color: white;
-        padding: 10px;
-        border-radius: 10px 10px 0 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-    " id="chatHeader">
+    <div id="chatHeader" class="chat-header">
         <span>Chat</span>
-        <span id="chatMinimize" style="cursor:pointer;">&#9660;</span> <!-- down arrow initially -->
+        <span id="chatMinimize">&#9660;</span> <!-- down arrow initially -->
     </div>
 
     <!-- Body -->
-    <div id="chatContent" style="
-        padding: 15px; 
-        font-size: 14px; 
-        color: #000;
-        height: auto; 
-        transition: height 0.3s ease; /* slide animation */
-    ">
+    <div id="chatContent" class="chat-content">
         <p>
             For more information about this tool, please head to our <a href="about.html" style="color:#0078d4; text-decoration:underline;">About</a> page!
         </p>
@@ -106,7 +78,7 @@
 
     let minimized = false; // start maximized
 
-    // store natural height for animation
+    // store natural height for slide animation
     const fullHeight = chatContent.scrollHeight + "px";
     chatContent.style.height = fullHeight;
 
@@ -115,11 +87,9 @@
         minimized = !minimized;
 
         if(minimized){
-            // slide up
             chatContent.style.height = '0';
             chatMinimize.innerHTML = '&#9650;'; // up arrow
         } else {
-            // slide down
             chatContent.style.height = fullHeight;
             chatMinimize.innerHTML = '&#9660;'; // down arrow
         }
