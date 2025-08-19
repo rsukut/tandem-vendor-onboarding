@@ -10,7 +10,7 @@
         if (darkModeToggle) darkModeToggle.textContent = "Light Mode";
         if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooterdark.png';
     } else {
-        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.jpg';
+        if (footerLogo) footerLogo.src = '/tandem-vendor-onboarding/images/tndmfooter.png';
     }
 
     // Toggle dark mode on click
@@ -22,7 +22,7 @@
             darkModeToggle.textContent = darkNow ? "Light Mode" : "Dark Mode";
             if (footerLogo) footerLogo.src = darkNow
                 ? '/tandem-vendor-onboarding/images/tndmfooterdark.png'
-                : '/tandem-vendor-onboarding/images/tndmfooter.jpg';
+                : '/tandem-vendor-onboarding/images/tndmfooter.png';
             localStorage.setItem('darkMode', darkNow);
         });
     }
