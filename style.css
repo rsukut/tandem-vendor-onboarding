@@ -74,6 +74,22 @@ select {
     border-radius: 4px;
 }
 
+/* Light mode (default) */
+footer.site-footer {
+  background-color: #e5f2fa;
+  color: #000000;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Dark mode */
+body.dark-mode footer.site-footer {
+  background-color: #1e1e1e;
+  color: #cccccc;
+}
 .requirements-box {
     background: white;
     padding: 1rem;
