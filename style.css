@@ -498,7 +498,7 @@ body.dark-mode footer.site-footer a {
     position: fixed;
     bottom: 80px; /* sits just above footer */
     right: 20px;
-    background-color: orange;
+    background-color: blue;
     border: none;
     border-radius: 50%;
     width: 50px;
@@ -507,6 +507,12 @@ body.dark-mode footer.site-footer a {
     color: white;
     cursor: pointer;
     z-index: 1001;
+  }
+
+/* --- NEW: expanded chat content --- */
+  .chat-bubble.expanded .chat-content {
+    height: auto;        /* expands to fit content */
+    padding: 12px;       /* optional padding for readability */
   }
 }
 
