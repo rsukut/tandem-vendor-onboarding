@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(function() {
+    const PASSWORD = "Onboarding!"; // temporary password
+
+    // Set a session cookie
+    function setSessionCookie(name, value) {
+    document.cookie = `${name}=${value}; path=/; SameSite=Lax`;
+}
+
+    // Read a session cookie
+    function getSessionCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    // If already logged in this session, skip prompt
+    if (getSessionCookie("isLoggedIn") === "true") return;
+
+    // Prompt for password
+    let attempts = 3;
+    while (attempts > 0) {
+        const input = prompt("Please enter the password to access the Tandem Vendor Onboarding Tool:");
+        if (input === PASSWORD) {
+            setSessionCookie("isLoggedIn", "true"); // remember login for this session
+            return; // allow access
+        }
+        attempts--;
+        alert(`Incorrect password. You have ${attempts} attempt(s) remaining.`);
+    }
+
+    // If all attempts fail, redirect to error page
+    alert("Access denied.");
+    window.location.href = "error.html";
+})();
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About the Vendor Onboarding Tool</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        /* Position the Home link in the same spot as the About link on index.html */
+        .page-link {
+            position: absolute;
+            top: 100px; /* adjust to match index.html header spacing */
+            right: 20px;
+            font-size: 1rem;
+        }
+        .page-link a {
+            text-decoration: none;
+            color: #0078d4;
+        }
+        .page-link a:hover {
+            text-decoration: underline;
+        }
+        main {
+            max-width: 800px;
+            margin: 120px auto 40px auto; /* push content down below header */
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<!-- Chat Bubble -->
+<div id="chatBubble" class="chat-bubble">
+    <!-- Header with minimize button -->
+    <div id="chatHeader" class="chat-header">
+        <span>Need Help?</span>
+        <span id="chatMinimize">&#9660;</span> <!-- down arrow initially -->
+    </div>
+
+    <!-- Body -->
+    <div id="chatContent" class="chat-content">
+        <p> For a full walkthrough, please visit the <a href="/instructions.html">Instructions</a> page.</p>
+           <p>For questions or updates, please 
+           <a href="https://teams.microsoft.com/l/chat/0/0?users=rsukut@tandemdiabetes.com" target="_blank">
+               send us a Teams message
+           </a>.
+        </p>
+    </div>
+</div>
+
+<script>
+    const chatContent = document.getElementById('chatContent');
+    const chatMinimize = document.getElementById('chatMinimize');
+
+    let minimized = false; // start maximized
+
+    // store natural height for slide animation
+    const fullHeight = chatContent.scrollHeight + "px";
+    chatContent.style.height = fullHeight;
+
+    chatMinimize.addEventListener('click', (e) => {
+        e.stopPropagation();
+        minimized = !minimized;
+
+        if(minimized){
+            chatContent.style.height = '0';
+            chatMinimize.innerHTML = '&#9650;'; // up arrow
+        } else {
+            chatContent.style.height = fullHeight;
+            chatMinimize.innerHTML = '&#9660;'; // down arrow
+        }
+    });
+</script>
+<body>
+    <header>
+        <h1>Additional Links & Resources</h1>
+        <img src="/tandem-vendor-onboarding/images/tndmfooterdark.png" alt="Tandem Diabetes Logo" class="logo"
+            style="max-width: 160px; height: auto;">
+    </header>
+
+<div class="home-link-wrapper">
+    <a href="index.html" class="home-link">Home</a>
+    <a href="instructions.html" class="home-link">Instructions</a>
+    <a href="about.html" class="home-link">About</a>
+</div>
+
+    <main>
+        <h1>Additional Links & Resources</h1>
+        <h2>Helpful Links</h2>
+          <p><a href="https://confluence.tandemdiabetes.com:8443/display/RD/Operations+Landing+Page">Ops Landing Page</a><br>
+            This page provides status updates on the Ops team's current projects and initiatives, a broad future scope, links to frequently-used resources, and more.
+          </p>
+      
+      <p><a href="https://demo.bluetallyapp.com/">BlueTally Demo Page</a><br>
+          As we move toward centralizing our asset tracking using BlueTally, you can familiarize yourself using their Demo page. Included in this page are also links to their FAQs and how-to guides.
+          </p>
+      
+      <h2>Request Forms</h2>
+          <p><a href="https://forms.office.com/r/SLThEwFhsE">Hardware Request Form</a><br>
+          This is a link to our Hardware Request Form. Using this form, you can request an order for closed pumps, fixtures, cartridges, equipment, and other testing materials.
+          </p>
+        
+          <p><a href="https://forms.office.com/r/QKDL5gs95s">Asset Checkout & Tracking Form</a><br>
+          This form allows all users within R&D to check out and track items within our inventory. Using this form will assist in Operations' ongoing initiative to move toward a centralized asset tracking system.
+          </p>
+        
+          <p><a href="https://forms.office.com/r/w357h03CXp">New Position Request Form</a><br>
+          The New Position Request Form can be used when requesting the review and implementation of a new role that has not yet been established within the org.
+          </p>
+    </main>
+<footer class="site-footer">
+  <div>
+    <img src="/tandem-vendor-onboarding/images/tndmfooter.png" alt="Tandem Diabetes Logo" class="logo"
+            style="max-width: 160px; height: auto;">
+  </div>
+  <div>
+    <a href="https://www.tandemdiabetes.com/legal/privacy/privacy-notice" target="_blank">Privacy Policy</a> |
+    <a href="https://www.tandemdiabetes.com/terms-of-use" target="_blank">Terms of Use</a> |
+    <a href="#" id="darkModeToggle">Dark Mode</a>
+  </div>
+  <div>
+    © 2025 Tandem Diabetes Care, Inc. All rights reserved.
+  </div>
+</footer>
+<script src="/tandem-vendor-onboarding/scripts/darkmode.js"></script>
+<!-- Chat Toggle Button (mobile only) -->
+<button id="chat-toggle">💬</button>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("chat-toggle");
+    const chat = document.querySelector(".chat-bubble");
+
+    if (toggle && chat) {
+      toggle.addEventListener("click", function () {
+        if (chat.style.display === "none" || chat.style.display === "") {
+          chat.style.display = "block";
+        } else {
+          chat.style.display = "none";
+        }
+      });
+    }
+  });
+</script>    
+</body>
+</html>
